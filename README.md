@@ -61,7 +61,7 @@ to include the necessary types.
 You will also need to include your setup file in your `tsconfig.json` if you
 haven't already:
 
-```json
+```json5
   // In tsconfig.json
   "include": [
     // ...
