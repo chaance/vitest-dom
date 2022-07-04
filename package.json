@@ -45,6 +45,7 @@
   "types": "index.d.js",
   "files": [
     "CHANGELOG.md",
+    "extend-expect.d.ts",
     "extend-expect.js",
     "index.d.ts",
     "LICENSE",
