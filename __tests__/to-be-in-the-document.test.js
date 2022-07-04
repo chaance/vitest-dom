@@ -1,4 +1,4 @@
-import { HtmlElementTypeError } from "../utils";
+import { HtmlElementTypeError } from "../src/utils";
 import document from "./helpers/document";
 import { test, expect } from "vitest";
 

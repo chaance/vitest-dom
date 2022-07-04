@@ -5,7 +5,7 @@ import {
   HtmlElementTypeError,
   NodeTypeError,
   toSentence,
-} from "../utils";
+} from "../src/utils";
 import document from "./helpers/document";
 import { beforeAll, describe, expect, it, test, vi } from "vitest";
 

@@ -1,4 +1,3 @@
-/* eslint max-statements:off */
 import { render } from "./helpers/test-utils";
 import { expect, test } from "vitest";
 
