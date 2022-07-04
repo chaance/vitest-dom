@@ -43,7 +43,7 @@ good to go:
 
 ```javascript
 // In your own vitest-setup.js (or any other name)
-import "vitest-dom";
+import "vitest-dom/extend-expect";
 
 // In vitest.config.js add (if you haven't already)
 export default defineConfig({
