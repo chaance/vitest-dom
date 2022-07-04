@@ -1,0 +1,56 @@
+{
+  "name": "vitest-dom",
+  "version": "0.0.0",
+  "description": "Custom Vitest matchers to test the state of the DOM, forked from jest-dom.",
+  "author": "Chance Stricklad <hi@chance.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaance/vitest-dom.git"
+  },
+  "scripts": {
+    "test:dom": "vitest --config vitest.config.dom.js",
+    "test:node": "vitest --config vitest.config.node.js",
+    "test": "run-p test:*",
+    "lint": "eslint .",
+    "format": "prettier --write '**/*.{ts,js}'"
+  },
+  "devDependencies": {
+    "@types/aria-query": "^5.0.0",
+    "@types/lodash": "^4.14.182",
+    "esbuild": "^0.14.48",
+    "eslint": "^8.19.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-plugin-import": "^2.26.0",
+    "fast-glob": "^3.2.11",
+    "jsdom": "^20.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "pretty-format": "^28.1.1",
+    "vitest": "^0.17.0"
+  },
+  "dependencies": {
+    "aria-query": "^5.0.0",
+    "chalk": "^5.0.1",
+    "dom-accessibility-api": "^0.5.14",
+    "lodash": "^4.17.21",
+    "redent": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vitest": "^0.16.0"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "index.d.js",
+  "files": [
+    "CHANGELOG.md",
+    "extend-expect.js",
+    "index.d.ts",
+    "LICENSE",
+    "matchers.d.ts",
+    "matchers.js",
+    "README.md",
+    "src"
+  ]
+}
