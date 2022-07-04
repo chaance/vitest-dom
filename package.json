@@ -42,16 +42,16 @@
   "type": "module",
   "main": "src/index.js",
   "module": "src/index.js",
-  "types": "index.d.js",
+  "types": "index.d.ts",
   "files": [
     "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "src",
     "extend-expect.d.ts",
     "extend-expect.js",
-    "index.d.ts",
-    "LICENSE",
     "matchers.d.ts",
     "matchers.js",
-    "README.md",
-    "src"
+    "index.d.ts"
   ]
 }
