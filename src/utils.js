@@ -1,9 +1,6 @@
 import redent from "redent";
 import cssParse from "./css-parse";
-// import isEqual from "lodash/isEqual";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const isEqual = require("lodash/isEqual");
+import { isEqual } from "lodash-es";
 
 class GenericTypeError extends Error {
   constructor(expectedString, received, matcherFn, context) {

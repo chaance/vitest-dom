@@ -4,10 +4,7 @@ import {
   getMessage,
   getSingleElementValue,
 } from "./utils";
-// import isEqualWith from "lodash/isEqualWith";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const isEqualWith = require("lodash/isEqualWith");
+import { isEqualWith } from "lodash-es";
 
 export function toHaveValue(htmlElement, expectedValue) {
   checkHtmlElement(htmlElement, toHaveValue, this);

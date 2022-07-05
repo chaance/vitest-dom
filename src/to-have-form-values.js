@@ -4,12 +4,7 @@ import {
   getSingleElementValue,
 } from "./utils";
 import escape from "./css-escape";
-// import isEqualWith from "lodash/isEqualWith";
-// import uniq from "lodash/uniq";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const isEqualWith = require("lodash/isEqualWith");
-const uniq = require("lodash/uniq");
+import { isEqualWith, uniq } from "lodash-es";
 
 // Returns the combined value of several elements that have the same name
 // e.g. radio buttons or groups of checkboxes
