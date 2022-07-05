@@ -2,12 +2,23 @@
   "name": "vitest-dom",
   "version": "0.0.4",
   "description": "Custom Vitest matchers to test the state of the DOM, forked from jest-dom.",
-  "author": "Chance Stricklad <hi@chance.dev>",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chaance/vitest-dom.git"
   },
+  "license": "MIT",
+  "author": "Chance Stricklad <hi@chance.dev>",
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "dist",
+    "extend-expect.d.ts",
+    "extend-expect.js",
+    "matchers.d.ts",
+    "matchers.js"
+  ],
   "scripts": {
     "build": "tsup",
     "test:dom": "vitest --config vitest.config.dom.ts",
@@ -16,11 +27,18 @@
     "lint": "eslint .",
     "format": "prettier --write '**/*.{ts,js}'"
   },
+  "dependencies": {
+    "aria-query": "^5.0.0",
+    "chalk": "^5.0.1",
+    "dom-accessibility-api": "^0.5.14",
+    "lodash-es": "^4.17.21",
+    "redent": "^3.0.0"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
     "@types/aria-query": "^5.0.0",
     "@types/lodash-es": "^4.17.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
     "esbuild": "^0.14.48",
     "eslint": "^8.19.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -35,25 +53,7 @@
     "typescript": "^4.7.4",
     "vitest": "^0.17.0"
   },
-  "dependencies": {
-    "aria-query": "^5.0.0",
-    "chalk": "^5.0.1",
-    "dom-accessibility-api": "^0.5.14",
-    "lodash-es": "^4.17.21",
-    "redent": "^3.0.0"
-  },
   "peerDependencies": {
     "vitest": "^0.16.0"
-  },
-  "type": "module",
-  "files": [
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md",
-    "dist",
-    "extend-expect.d.ts",
-    "extend-expect.js",
-    "matchers.d.ts",
-    "matchers.js"
-  ]
+  }
 }
