@@ -1,5 +1,9 @@
+const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
+
+const ecmaVersion = 2022;
+const sourceType = "module";
 
 module.exports = {
   env: {
@@ -8,15 +12,21 @@ module.exports = {
     es2021: true,
   },
   parserOptions: {
-    sourceType: "module",
-    ecmaVersion: 2022,
+    sourceType,
+    ecmaVersion,
   },
   plugins: ["import"],
   settings: {
     "import/ignore": ["node_modules", "\\.(css|md|svg|json)$"],
+    "import/parsers": {
+      [require.resolve("@typescript-eslint/parser")]: [".ts", ".tsx", ".d.ts"],
+    },
     "import/resolver": {
       [require.resolve("eslint-import-resolver-node")]: {
-        extensions: [".js"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+      [require.resolve("eslint-import-resolver-typescript")]: {
+        alwaysTryTypes: true,
       },
     },
   },
@@ -86,13 +96,13 @@ module.exports = {
       },
     ],
     "no-unused-labels": WARN,
-    "no-unused-vars": [
-      WARN,
-      {
-        args: "none",
-        ignoreRestSiblings: true,
-      },
-    ],
+    // "no-unused-vars": [
+    //   WARN,
+    //   {
+    //     args: "none",
+    //     ignoreRestSiblings: true,
+    //   },
+    // ],
     "no-use-before-define": [
       WARN,
       { classes: false, functions: false, variables: false },
@@ -116,4 +126,61 @@ module.exports = {
     "import/no-amd": ERROR,
     "import/no-webpack-loader-syntax": ERROR,
   },
+  overrides: [
+    {
+      files: ["**/*.ts"],
+      extends: ["plugin:import/typescript"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        sourceType,
+        ecmaVersion,
+        warnOnUnsupportedTypeScriptVersion: true,
+      },
+      plugins: ["@typescript-eslint"],
+      rules: {
+        "no-dupe-class-members": OFF,
+        "no-undef": OFF,
+
+        // Add TypeScript specific rules (and turn off ESLint equivalents)
+        "@typescript-eslint/consistent-type-assertions": WARN,
+        "@typescript-eslint/consistent-type-imports": WARN,
+
+        "no-array-constructor": OFF,
+        "@typescript-eslint/no-array-constructor": WARN,
+
+        "no-redeclare": OFF,
+        "@typescript-eslint/no-redeclare": ERROR,
+
+        "no-use-before-define": OFF,
+        "@typescript-eslint/no-use-before-define": [
+          WARN,
+          {
+            functions: false,
+            classes: false,
+            variables: false,
+            typedefs: false,
+          },
+        ],
+        "no-unused-expressions": OFF,
+        // "@typescript-eslint/no-unused-expressions": [
+        //   WARN,
+        //   {
+        //     allowShortCircuit: true,
+        //     allowTernary: true,
+        //     allowTaggedTemplates: true,
+        //   },
+        // ],
+        // "no-unused-vars": OFF,
+        // "@typescript-eslint/no-unused-vars": [
+        //   WARN,
+        //   {
+        //     args: "none",
+        //     ignoreRestSiblings: true,
+        //   },
+        // ],
+        "no-useless-constructor": OFF,
+        "@typescript-eslint/no-useless-constructor": WARN,
+      },
+    },
+  ],
 };
