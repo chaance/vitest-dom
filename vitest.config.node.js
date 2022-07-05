@@ -4,7 +4,7 @@ export default defineConfig({
   plugins: [],
   test: {
     environment: "node",
-    setupFiles: ["test/setupTests.js"],
+    setupFiles: ["test/setupTests.ts"],
     watch: false,
     coverage: {
       include: ["**/__tests__/**/*.{ts,js}"],

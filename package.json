@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "test:dom": "vitest --config vitest.config.dom.js",
+    "test:dom": "vitest --config vitest.config.dom.ts",
     "test:node": "vitest --config vitest.config.node.js",
     "test": "run-p test:*",
     "lint": "eslint .",
