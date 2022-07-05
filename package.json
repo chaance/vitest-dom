@@ -1,6 +1,6 @@
 {
   "name": "vitest-dom",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Custom Vitest matchers to test the state of the DOM, forked from jest-dom.",
   "author": "Chance Stricklad <hi@chance.dev>",
   "license": "MIT",
@@ -46,9 +46,6 @@
     "vitest": "^0.16.0"
   },
   "type": "module",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "types": "index.d.ts",
   "files": [
     "CHANGELOG.md",
     "LICENSE",
