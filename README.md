@@ -47,6 +47,9 @@ import * as matchers from "vitest-dom/matchers";
 import { expect } from "vitest";
 expect.extend(matchers);
 
+// or:
+import "vitest-dom/extend-expect";
+
 // In vitest.config.js, add the following
 export default defineConfig({
   test: {
