@@ -51,9 +51,9 @@
     "pretty-format": "^28.1.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
-    "vitest": "^0.30.0"
+    "vitest": "^0.31.0"
   },
   "peerDependencies": {
-    "vitest": ">=0.16 < 0.31"
+    "vitest": "^0.31.0"
   }
 }

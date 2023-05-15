@@ -1,11 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import type { expect } from "vitest";
+import type { ExpectStatic } from "vitest";
 
 export interface MatcherResult {
   pass: boolean;
   message(): string;
-  actual?: any;
-  expected?: any;
+  actual?: unknown;
+  expected?: unknown;
 }
 
 export type ExpectationResult = MatcherResult | Promise<MatcherResult>;
@@ -14,4 +13,4 @@ export interface MatcherFn<T extends MatcherState = MatcherState> {
   (this: T, received: any, expected: any, options?: any): ExpectationResult;
 }
 
-export type MatcherState = ReturnType<Vi.ExpectStatic["getState"]>;
+export type MatcherState = ReturnType<ExpectStatic["getState"]>;
