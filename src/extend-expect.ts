@@ -1,4 +1,5 @@
-import type { expect } from "vitest";
+import { expect } from "vitest";
+import * as matchers from "./matchers";
 import type { TestingLibraryMatchers } from "./matchers";
 
 declare module "vitest" {
@@ -7,3 +8,5 @@ declare module "vitest" {
   interface AsymmetricMatchersContaining
     extends TestingLibraryMatchers<unknown, unknown> {}
 }
+
+expect.extend({ ...matchers });
