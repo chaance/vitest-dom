@@ -1,14 +1,17 @@
 import document from "./document";
 
-function render(html) {
+function render(html: string) {
   const container = document.createElement("div");
   container.innerHTML = html;
 
-  const queryByTestId = (testId) =>
-    container.querySelector(`[data-testid="${testId}"]`);
+  function queryByTestId(testId: string) {
+    return container.querySelector(`[data-testid="${testId}"]`);
+  }
+
   // asFragment has been stolen from react-testing-library
-  const asFragment = () =>
-    document.createRange().createContextualFragment(container.innerHTML);
+  function asFragment() {
+    return document.createRange().createContextualFragment(container.innerHTML);
+  }
 
   // Some tests need to look up global ids with document.getElementById()
   // so we need to be inside an actual document.

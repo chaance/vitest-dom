@@ -1,7 +1,7 @@
+// @ts-expect-error
 import { JSDOM } from "jsdom";
 
-/** @type {Document} */
-let document;
+let document: Document;
 if (global.document) {
   document = global.document;
 } else {
