@@ -60,25 +60,31 @@ export default defineConfig({
 
 ### With TypeScript
 
-If you're using TypeScript, make sure your setup file is a `.ts` and not a `.js`
-to include the necessary types. Importing from `vitest-dom/extend-expect` will
-add the matchers to Vitest's `expect` types.
+If you're using TypeScript, make sure your setup file has a `.ts` extension to
+include the necessary types.
+
+If you import from `vitest-dom/extend-expect` to run `expect.extend` for you,
+you will get TypeScript support automatically.
 
 ```typescript
 // vitest-setup.ts
 import "vitest-dom/extend-expect";
 ```
 
-You will also need to include your setup file in your `tsconfig.json` if you
-haven't already:
+If you want to run `extend.expect` yourself, you will need to include the type defintions either with a `/// <reference />` directive or including the type in your `compilerOptions`:
 
-```json5
-  // In tsconfig.json
-  "include": [
-    // ...
-    "./vitest-setup.ts"
-  ],
-```
+1. In your test file via a reference directive:
+   ```typescript
+   /// <reference types="vitest-dom/extend-expect" />
+   ```
+2. In your `tsconfig.json` via the `types` compiler option:
+   ```json
+   {
+     "compilerOptions": {
+       "types": ["vitest-dom/extend-expect"]
+     }
+   }
+   ```
 
 <!-- prettier-ignore-start -->
 [vitest]: https://vitest.dev/
