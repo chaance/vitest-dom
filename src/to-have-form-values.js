@@ -3,7 +3,7 @@ import {
   compareArraysAsSet,
   getSingleElementValue,
 } from "./utils";
-import escape from "./css-escape";
+import escape from "css.escape";
 import { isEqualWith, uniq } from "lodash-es";
 
 // Returns the combined value of several elements that have the same name
