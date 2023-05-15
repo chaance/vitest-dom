@@ -54,6 +54,6 @@
     "vitest": "^0.30.0"
   },
   "peerDependencies": {
-    "vitest": "^0.16"
+    "vitest": ">=0.16 < 0.31"
   }
 }
