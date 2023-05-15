@@ -1,4 +1,5 @@
-import type { expect } from "vitest";
+import { expect } from "vitest";
+import * as matchers from "./matchers";
 import type { TestingLibraryMatchers } from "./matchers";
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
       extends TestingLibraryMatchers<typeof expect.stringContaining, T> {}
   }
 }
+
+expect.extend({ ...matchers });
