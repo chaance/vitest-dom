@@ -33,7 +33,7 @@
     "css.escape": "^1.5.1",
     "dom-accessibility-api": "^0.6.0",
     "lodash-es": "^4.17.21",
-    "redent": "^3.0.0"
+    "redent": "^4.0.0"
   },
   "devDependencies": {
     "@types/aria-query": "^5.0.1",
