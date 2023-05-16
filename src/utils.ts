@@ -257,7 +257,7 @@ function getSingleElementValue(
   element: HTMLSelectElement
 ): ReturnType<typeof getSelectValue>;
 function getSingleElementValue(
-  element: HTMLMeterElement | HTMLProgressElement | HTMLLIElement
+  element: HTMLMeterElement | HTMLProgressElement
 ): number;
 function getSingleElementValue(
   element:
@@ -267,7 +267,9 @@ function getSingleElementValue(
     | HTMLOutputElement
     | HTMLTextAreaElement
 ): string;
-function getSingleElementValue(element: Element): unknown;
+function getSingleElementValue(
+  element: Element
+): undefined | string | string[] | number | boolean | null;
 
 function getSingleElementValue(element: Element | undefined | null) {
   if (!element) {

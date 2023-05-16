@@ -2,12 +2,13 @@ import { HtmlElementTypeError } from "../src/utils";
 import document from "./helpers/document";
 import { test, expect } from "vitest";
 
-const window = document.defaultView;
+const window = document.defaultView!;
+const HTMLElement = window.HTMLElement;
 
 test(".toBeInTheDocument", () => {
   window.customElements.define(
     "custom-element",
-    class extends window.HTMLElement {
+    class extends HTMLElement {
       constructor() {
         super();
         this.attachShadow({ mode: "open" }).innerHTML =
@@ -25,7 +26,7 @@ test(".toBeInTheDocument", () => {
   const svgElement = document.querySelector('[data-testid="svg-element"]');
   const customElementChild = document
     .querySelector('[data-testid="custom-element"]')
-    .shadowRoot.querySelector('[data-testid="custom-element-child"]');
+    ?.shadowRoot?.querySelector('[data-testid="custom-element-child"]');
   const detachedElement = document.createElement("div");
   const fakeElement = { thisIsNot: "an html element" };
   const undefinedElement = undefined;

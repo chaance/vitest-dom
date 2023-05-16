@@ -5,10 +5,19 @@ import {
 } from "./utils";
 import escape from "css.escape";
 import { isEqualWith, uniq } from "lodash-es";
+import type { MatcherResult } from "./types";
 
 // Returns the combined value of several elements that have the same name
 // e.g. radio buttons or groups of checkboxes
-function getMultiElementValue(elements) {
+function getMultiElementValue(
+  elements: (HTMLInputElement & { type: "radio" })[]
+): string | undefined;
+function getMultiElementValue(
+  elements: (HTMLInputElement & { type: "checkbox" })[]
+): string[];
+function getMultiElementValue(elements: HTMLInputElement[]): string[];
+
+function getMultiElementValue(elements: HTMLInputElement[]) {
   const types = uniq(elements.map((element) => element.type));
   if (types.length !== 1) {
     throw new Error(
@@ -30,9 +39,22 @@ function getMultiElementValue(elements) {
   }
 }
 
-function getFormValue(container, name) {
-  const elements = [...container.querySelectorAll(`[name="${escape(name)}"]`)];
-  /* istanbul ignore if */
+type FormElement =
+  | HTMLInputElement
+  | HTMLSelectElement
+  | HTMLTextAreaElement
+  | HTMLButtonElement
+  | HTMLMeterElement
+  | HTMLProgressElement;
+
+function getFormValue(
+  container: HTMLFormElement | HTMLFieldSetElement,
+  name: string
+) {
+  container.elements;
+  const elements = [
+    ...container.querySelectorAll(`[name="${escape(name)}"]`),
+  ] as FormElement[];
   if (elements.length === 0) {
     return undefined; // shouldn't happen, but just in case
   }
@@ -40,18 +62,20 @@ function getFormValue(container, name) {
     case 1:
       return getSingleElementValue(elements[0]);
     default:
-      return getMultiElementValue(elements);
+      return getMultiElementValue(elements as HTMLInputElement[]);
   }
 }
 
 // Strips the `[]` suffix off a form value name
-function getPureName(name) {
+function getPureName(name: string) {
   return /\[\]$/.test(name) ? name.slice(0, -2) : name;
 }
 
-function getAllFormValues(container) {
-  const names = Array.from(container.elements).map((element) => element.name);
-  return names.reduce(
+function getAllFormValues(container: HTMLFormElement | HTMLFieldSetElement) {
+  const names = Array.from(container.elements).map(
+    (element) => (element as HTMLInputElement).name
+  );
+  return names.reduce<Record<string, unknown>>(
     (obj, name) => ({
       ...obj,
       [getPureName(name)]: getFormValue(container, name),
@@ -60,7 +84,11 @@ function getAllFormValues(container) {
   );
 }
 
-export function toHaveFormValues(formElement, expectedValues) {
+export function toHaveFormValues(
+  this: any,
+  formElement: HTMLFormElement | HTMLFieldSetElement,
+  expectedValues: Record<string, unknown>
+): MatcherResult {
   checkHtmlElement(formElement, toHaveFormValues, this);
   if (!formElement.elements) {
     // TODO: Change condition to use instanceof against the appropriate element classes instead
