@@ -20,3 +20,8 @@
 - We now use the `css.escape` package to polyfill `CSS.escape` in
   `toHaveFormValues` matcher. This will use the built-in `CSS.escape` if it is
   detected in your runtime.
+
+## v0.1.1
+
+- Relaxed `peerDependency` on Vitest (#7)
+- Updated internal dependencies
