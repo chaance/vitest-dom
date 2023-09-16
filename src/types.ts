@@ -14,3 +14,7 @@ export interface MatcherFn<T extends MatcherState = MatcherState> {
 }
 
 export type MatcherState = ReturnType<ExpectStatic["getState"]>;
+
+export type InferredMatcher<T extends MatcherFn, R> = (
+  ...args: T extends (first: any, ...rest: infer P) => any ? P : never
+) => R;
