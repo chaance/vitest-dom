@@ -1,7 +1,6 @@
 import { defineConfig, configDefaults } from "vitest/config";
 
 export default defineConfig({
-  plugins: [],
   test: {
     environment: "node",
     setupFiles: ["test/setupTests.ts"],
