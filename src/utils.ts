@@ -1,44 +1,40 @@
 import redent from "redent";
 import cssParse from "./css-parse";
-import { isEqual } from "lodash-es";
-import type { MatcherFn } from "./types";
+import isEqual from "lodash-es/isEqual";
+import isFunction from "lodash-es/isFunction";
+import type { MatcherFn, MatcherState } from "./types";
 
-interface ErrorContext {
-  utils: {
-    printWithType(
-      name: string,
-      received: unknown,
-      print: (val: unknown) => string,
-    ): string;
-    printReceived(val: unknown): string;
-    matcherHint(
-      matcherName: string,
-      received: string,
-      expected?: string,
-      options?: { secondArgument?: string; isDirectExpectCall?: boolean },
-    ): string;
-    stringify(val: unknown): string;
-    RECEIVED_COLOR(str: string): string;
-    EXPECTED_COLOR(str: string): string;
-  };
+type ErrorUtils = MatcherState["utils"];
+
+export type ErrorContext = {
+  utils: ErrorUtils;
   isNot?: boolean;
-}
+};
 
-class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
+class GenericTypeError<
+  State extends MatcherState,
+  Ctx extends ErrorContext,
+> extends Error {
   constructor(
     expectedString: string,
     received: HTMLElement,
-    matcherFn: MatcherFn,
+    matcherFn: MatcherFn<State>,
     context: Ctx,
   ) {
     super();
+
+    const printWithType =
+      "printWithType" in context.utils &&
+      isFunction(context.utils.printWithType)
+        ? context.utils.printWithType
+        : _printWithType;
 
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, matcherFn);
     }
     let withType = "";
     try {
-      withType = context.utils.printWithType(
+      withType = printWithType(
         "Received",
         received,
         context.utils.printReceived,
@@ -63,25 +59,32 @@ class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
 }
 
 class HtmlElementTypeError<
+  State extends MatcherState = any,
   Ctx extends ErrorContext = any,
-> extends GenericTypeError<Ctx> {
-  constructor(element: HTMLElement, matcherFn: MatcherFn, context: Ctx) {
+> extends GenericTypeError<State, Ctx> {
+  constructor(element: HTMLElement, matcherFn: MatcherFn<State>, context: Ctx) {
     super("be an HTMLElement or an SVGElement", element, matcherFn, context);
   }
 }
 
 class NodeTypeError<
+  State extends MatcherState = any,
   Ctx extends ErrorContext = any,
-> extends GenericTypeError<Ctx> {
-  constructor(element: HTMLElement, matcherFn: MatcherFn, context: Ctx) {
+> extends GenericTypeError<State, Ctx> {
+  constructor(element: HTMLElement, matcherFn: MatcherFn<State>, context: Ctx) {
     super("be a Node", element, matcherFn, context);
   }
 }
 
-function checkHasWindow<Ctx extends ErrorContext = any>(
+function checkHasWindow<
+  State extends MatcherState,
+  Ctx extends ErrorContext = any,
+>(
   htmlElement: HTMLElement,
-  ErrorClass: typeof HtmlElementTypeError | typeof NodeTypeError,
-  matcherFn: MatcherFn,
+  ErrorClass:
+    | typeof HtmlElementTypeError<State, Ctx>
+    | typeof NodeTypeError<State, Ctx>,
+  matcherFn: MatcherFn<State>,
   context: Ctx,
 ): asserts htmlElement is HTMLElement & {
   ownerDocument: Document & { defaultView: Window };
@@ -107,11 +110,10 @@ function checkNode<Ctx extends ErrorContext = any>(
   }
 }
 
-function checkHtmlElement<Ctx extends ErrorContext = any>(
-  htmlElement: HTMLElement,
-  matcher: MatcherFn,
-  context: Ctx,
-) {
+function checkHtmlElement<
+  State extends MatcherState,
+  Ctx extends ErrorContext = any,
+>(htmlElement: HTMLElement, matcher: MatcherFn<State>, context: Ctx) {
   checkHasWindow(htmlElement, HtmlElementTypeError, matcher, context);
   const window = htmlElement.ownerDocument.defaultView;
 
@@ -183,7 +185,7 @@ function display(context: ErrorContext, value: unknown) {
 
 function getMessage(
   context: ErrorContext,
-  matcher: MatcherFn,
+  matcher: string,
   expectedLabel: string,
   expectedValue: any,
   receivedLabel: string,
@@ -316,3 +318,83 @@ export {
   compareArraysAsSet,
   toSentence,
 };
+
+function _printWithType<T>(
+  name: string,
+  value: T,
+  print: (value: T) => string,
+): string {
+  const type = getType(value);
+  const hasType =
+    type !== "null" && type !== "undefined"
+      ? `${name} has type:  ${type}\n`
+      : "";
+  const hasValue = `${name} has value: ${print(value)}`;
+  return hasType + hasValue;
+}
+
+/**
+ * https://github.com/jestjs/jest/blob/main/packages/jest-get-type/src/index.ts
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+type ValueType =
+  | "array"
+  | "bigint"
+  | "boolean"
+  | "function"
+  | "null"
+  | "number"
+  | "object"
+  | "regexp"
+  | "map"
+  | "set"
+  | "date"
+  | "string"
+  | "symbol"
+  | "undefined";
+
+// get the type of a value with handling the edge cases like `typeof []`
+// and `typeof null`
+export function getType(value: unknown): ValueType {
+  if (value === undefined) {
+    return "undefined";
+  } else if (value === null) {
+    return "null";
+  } else if (Array.isArray(value)) {
+    return "array";
+  } else if (typeof value === "boolean") {
+    return "boolean";
+  } else if (typeof value === "function") {
+    return "function";
+  } else if (typeof value === "number") {
+    return "number";
+  } else if (typeof value === "string") {
+    return "string";
+  } else if (typeof value === "bigint") {
+    return "bigint";
+  } else if (typeof value === "object") {
+    if (value != null) {
+      if (value.constructor === RegExp) {
+        return "regexp";
+      } else if (value.constructor === Map) {
+        return "map";
+      } else if (value.constructor === Set) {
+        return "set";
+      } else if (value.constructor === Date) {
+        return "date";
+      }
+    }
+    return "object";
+  } else if (typeof value === "symbol") {
+    return "symbol";
+  }
+
+  throw new Error(`value of unknown type: ${value}`);
+}
+
+export const isPrimitive = (value: unknown): boolean => Object(value) !== value;
