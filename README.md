@@ -1,3 +1,12 @@
+> [!IMPORTANT] When I created this package, `@testing-library/jest-dom` had been
+> implemented in such a way that it was difficult to integrate with Vitest
+> without bringing a lot of cruft from Jest, or foregoing proper types. This is
+> no longer the case, and [`@testing-library/jest-dom` appears to support both
+> Jest and Vitest](https://github.com/testing-library/jest-dom#with-vitest).
+>
+> I recommend using that package instead of this one moving forward, as I'm
+> unlikely to maintain this in the future.
+
 <div align="center">
 <h1>vitest-dom</h1>
 
