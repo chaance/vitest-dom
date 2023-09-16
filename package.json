@@ -1,6 +1,6 @@
 {
   "name": "vitest-dom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom Vitest matchers to test the state of the DOM, forked from jest-dom.",
   "repository": {
     "type": "git",
