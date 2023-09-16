@@ -8,7 +8,7 @@ const validStates = ["false"];
 export function toHaveAccessibleErrorMessage<State extends MatcherState>(
   this: State,
   htmlElement: HTMLElement,
-  expectedAccessibleErrorMessage?: string | RegExp | State
+  expectedAccessibleErrorMessage?: string | RegExp | State,
 ): MatcherResult {
   checkHtmlElement(htmlElement, toHaveAccessibleErrorMessage, this);
   const to = this.isNot ? "not to" : "to";
@@ -30,7 +30,7 @@ export function toHaveAccessibleErrorMessage<State extends MatcherState>(
           "Expected element's `aria-errormessage` attribute to be empty or a single, valid ID",
           "",
           "Received",
-          `aria-errormessage="${errormessageId}"`
+          `aria-errormessage="${errormessageId}"`,
         );
       },
     };
@@ -55,7 +55,7 @@ export function toHaveAccessibleErrorMessage<State extends MatcherState>(
           "Received",
           htmlElement.hasAttribute("aria-invalid")
             ? `${ariaInvalidName}="${htmlElement.getAttribute(ariaInvalidName)}`
-            : null
+            : null,
         );
       },
     };
@@ -65,7 +65,7 @@ export function toHaveAccessibleErrorMessage<State extends MatcherState>(
     errormessageId != null
       ? htmlElement.ownerDocument.getElementById(errormessageId)?.textContent ??
           ""
-      : ""
+      : "",
   );
 
   return {
@@ -83,7 +83,7 @@ export function toHaveAccessibleErrorMessage<State extends MatcherState>(
         `Expected element ${to} have accessible error message`,
         expectedAccessibleErrorMessage ?? "",
         "Received",
-        error
+        error,
       );
     },
   };

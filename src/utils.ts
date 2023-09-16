@@ -6,20 +6,12 @@ import type { MatcherFn, MatcherState } from "./types";
 
 type ErrorUtils = MatcherState["utils"];
 
-export type ErrorContext = {
-  utils: ErrorUtils;
-  isNot?: boolean;
-};
-
-class GenericTypeError<
-  State extends MatcherState,
-  Ctx extends ErrorContext,
-> extends Error {
+class GenericTypeError<State extends MatcherState> extends Error {
   constructor(
     expectedString: string,
     received: HTMLElement,
     matcherFn: MatcherFn<State>,
-    context: Ctx,
+    context: State,
   ) {
     super();
 
@@ -60,32 +52,33 @@ class GenericTypeError<
 
 class HtmlElementTypeError<
   State extends MatcherState = any,
-  Ctx extends ErrorContext = any,
-> extends GenericTypeError<State, Ctx> {
-  constructor(element: HTMLElement, matcherFn: MatcherFn<State>, context: Ctx) {
+> extends GenericTypeError<State> {
+  constructor(
+    element: HTMLElement,
+    matcherFn: MatcherFn<State>,
+    context: State,
+  ) {
     super("be an HTMLElement or an SVGElement", element, matcherFn, context);
   }
 }
 
 class NodeTypeError<
   State extends MatcherState = any,
-  Ctx extends ErrorContext = any,
-> extends GenericTypeError<State, Ctx> {
-  constructor(element: HTMLElement, matcherFn: MatcherFn<State>, context: Ctx) {
+> extends GenericTypeError<State> {
+  constructor(
+    element: HTMLElement,
+    matcherFn: MatcherFn<State>,
+    context: State,
+  ) {
     super("be a Node", element, matcherFn, context);
   }
 }
 
-function checkHasWindow<
-  State extends MatcherState,
-  Ctx extends ErrorContext = any,
->(
+function checkHasWindow<State extends MatcherState>(
   htmlElement: HTMLElement,
-  ErrorClass:
-    | typeof HtmlElementTypeError<State, Ctx>
-    | typeof NodeTypeError<State, Ctx>,
+  ErrorClass: typeof HtmlElementTypeError<State> | typeof NodeTypeError<State>,
   matcherFn: MatcherFn<State>,
-  context: Ctx,
+  context: State,
 ): asserts htmlElement is HTMLElement & {
   ownerDocument: Document & { defaultView: Window };
 } {
@@ -98,10 +91,10 @@ function checkHasWindow<
   }
 }
 
-function checkNode<Ctx extends ErrorContext = any>(
+function checkNode<State extends MatcherState = any>(
   node: HTMLElement,
   matcherFn: MatcherFn,
-  context: Ctx,
+  context: State,
 ) {
   checkHasWindow(node, NodeTypeError, matcherFn, context);
   const window = node.ownerDocument.defaultView;
@@ -110,10 +103,11 @@ function checkNode<Ctx extends ErrorContext = any>(
   }
 }
 
-function checkHtmlElement<
-  State extends MatcherState,
-  Ctx extends ErrorContext = any,
->(htmlElement: HTMLElement, matcher: MatcherFn<State>, context: Ctx) {
+function checkHtmlElement<State extends MatcherState>(
+  htmlElement: HTMLElement,
+  matcher: MatcherFn<State>,
+  context: State,
+) {
   checkHasWindow(htmlElement, HtmlElementTypeError, matcher, context);
   const window = htmlElement.ownerDocument.defaultView;
 
@@ -126,14 +120,14 @@ function checkHtmlElement<
   }
 }
 
-class InvalidCSSError<Ctx extends ErrorContext = any> extends Error {
+class InvalidCSSError<State extends MatcherState> extends Error {
   constructor(
     received: {
       message: string;
       css: string;
     },
     matcherFn: MatcherFn,
-    context: Ctx,
+    context: State,
   ) {
     super();
 
@@ -149,10 +143,10 @@ class InvalidCSSError<Ctx extends ErrorContext = any> extends Error {
   }
 }
 
-function parseCSS<Ctx extends ErrorContext = any>(
+function parseCSS<State extends MatcherState>(
   css: string,
   matcherFn: MatcherFn,
-  context: Ctx,
+  context: State,
 ) {
   const ast = cssParse(`selector { ${css} }`, { silent: true }).stylesheet;
 
@@ -179,12 +173,12 @@ function parseCSS<Ctx extends ErrorContext = any>(
   return parsedRules;
 }
 
-function display(context: ErrorContext, value: unknown) {
+function display(context: MatcherState, value: unknown) {
   return typeof value === "string" ? value : context.utils.stringify(value);
 }
 
 function getMessage(
-  context: ErrorContext,
+  context: MatcherState,
   matcher: string,
   expectedLabel: string,
   expectedValue: any,
