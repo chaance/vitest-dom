@@ -3,7 +3,7 @@ import { checkHtmlElement, deprecate } from "./utils";
 export function toBeEmpty(element) {
   deprecate(
     "toBeEmpty",
-    "Please use instead toBeEmptyDOMElement for finding empty nodes in the DOM."
+    "Please use instead toBeEmptyDOMElement for finding empty nodes in the DOM.",
   );
   checkHtmlElement(element, toBeEmpty, this);
 
@@ -14,7 +14,7 @@ export function toBeEmpty(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeEmpty`,
           "element",
-          ""
+          "",
         ),
         "",
         "Received:",

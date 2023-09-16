@@ -20,7 +20,7 @@ function isSubset(styles, computedStyle) {
     Object.entries(styles).every(
       ([prop, value]) =>
         computedStyle[prop] === value ||
-        computedStyle.getPropertyValue(prop.toLowerCase()) === value
+        computedStyle.getPropertyValue(prop.toLowerCase()) === value,
     )
   );
 }
@@ -40,7 +40,7 @@ function expectedDiff(diffFn, expected, computedStyles) {
     .reduce(
       (obj, prop) =>
         Object.assign(obj, { [prop]: computedStyles.getPropertyValue(prop) }),
-      {}
+      {},
     );
   const diffOutput = diffFn(printoutStyles(expected), printoutStyles(received));
   // Remove the "+ Received" annotation because this is a one-way diff

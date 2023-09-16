@@ -438,7 +438,7 @@ export interface TestingLibraryMatchers<E, R> extends Record<string, any> {
    */
   toHaveTextContent(
     text: string | RegExp,
-    options?: { normalizeWhitespace: boolean }
+    options?: { normalizeWhitespace: boolean },
   ): R;
   /**
    * @description

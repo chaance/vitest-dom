@@ -38,59 +38,59 @@ describe(".toContainHTML", () => {
 
     // negative test cases wrapped in throwError assertions for coverage.
     expect(() =>
-      expect(nonExistantElement).not.toContainHTML(stringChildElement)
+      expect(nonExistantElement).not.toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(nonExistantElement).not.toContainHTML(nonExistantElement)
+      expect(nonExistantElement).not.toContainHTML(nonExistantElement),
     ).toThrowError();
     expect(() =>
-      expect(stringChildElement).not.toContainHTML(fakeElement)
+      expect(stringChildElement).not.toContainHTML(fakeElement),
     ).toThrowError();
     expect(() =>
-      expect(svgElement).toContainHTML(stringChildElement)
+      expect(svgElement).toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(grandparent).not.toContainHTML(stringChildElement)
+      expect(grandparent).not.toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(parent).not.toContainHTML(stringChildElement)
+      expect(parent).not.toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(child).not.toContainHTML(stringChildElement)
+      expect(child).not.toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(child).not.toContainHTML(stringChildElement)
+      expect(child).not.toContainHTML(stringChildElement),
     ).toThrowError();
     expect(() =>
-      expect(child).not.toContainHTML(stringChildElementSelfClosing)
+      expect(child).not.toContainHTML(stringChildElementSelfClosing),
     ).toThrowError();
     expect(() => expect(child).toContainHTML(nonExistantString)).toThrowError();
     expect(() =>
-      expect(parent).toContainHTML(nonExistantString)
+      expect(parent).toContainHTML(nonExistantString),
     ).toThrowError();
     expect(() =>
-      expect(grandparent).toContainHTML(nonExistantString)
+      expect(grandparent).toContainHTML(nonExistantString),
     ).toThrowError();
     expect(() =>
-      expect(child).toContainHTML(nonExistantElement)
+      expect(child).toContainHTML(nonExistantElement),
     ).toThrowError();
     expect(() =>
-      expect(parent).toContainHTML(nonExistantElement)
+      expect(parent).toContainHTML(nonExistantElement),
     ).toThrowError();
     expect(() =>
-      expect(grandparent).toContainHTML(nonExistantElement)
+      expect(grandparent).toContainHTML(nonExistantElement),
     ).toThrowError();
     expect(() =>
-      expect(nonExistantElement).not.toContainHTML(incorrectStringHtml)
+      expect(nonExistantElement).not.toContainHTML(incorrectStringHtml),
     ).toThrowError();
     expect(() =>
-      expect(grandparent).not.toContainHTML(incorrectStringHtml)
+      expect(grandparent).not.toContainHTML(incorrectStringHtml),
     ).toThrowError();
     expect(() =>
-      expect(child).not.toContainHTML(incorrectStringHtml)
+      expect(child).not.toContainHTML(incorrectStringHtml),
     ).toThrowError();
     expect(() =>
-      expect(parent).not.toContainHTML(incorrectStringHtml)
+      expect(parent).not.toContainHTML(incorrectStringHtml),
     ).toThrowError();
   });
 

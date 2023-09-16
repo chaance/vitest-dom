@@ -5,7 +5,7 @@ function render(html: string) {
   container.innerHTML = html;
 
   function queryByTestId<E extends Element = Element>(
-    testId: string
+    testId: string,
   ): E | null {
     return container.querySelector(`[data-testid="${testId}"]`);
   }

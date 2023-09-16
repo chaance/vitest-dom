@@ -37,19 +37,19 @@ test(".toBeInTheDOM", () => {
   expect(containerElement).not.toBeInTheDOM(valueElement);
 
   expect(() =>
-    expect(valueElement).not.toBeInTheDOM(containerElement)
+    expect(valueElement).not.toBeInTheDOM(containerElement),
   ).toThrowError();
 
   expect(() =>
-    expect(svgElement).not.toBeInTheDOM(containerElement)
+    expect(svgElement).not.toBeInTheDOM(containerElement),
   ).toThrowError();
 
   expect(() =>
-    expect(nonExistantElement).toBeInTheDOM(containerElement)
+    expect(nonExistantElement).toBeInTheDOM(containerElement),
   ).toThrowError();
 
   expect(() =>
-    expect(fakeElement).toBeInTheDOM(containerElement)
+    expect(fakeElement).toBeInTheDOM(containerElement),
   ).toThrowError();
 
   expect(() => {

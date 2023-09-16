@@ -30,10 +30,10 @@ describe(".toBeVisible", () => {
     expect(container.querySelector("strong")).not.toBeVisible();
 
     expect(() =>
-      expect(container.querySelector("header")).not.toBeVisible()
+      expect(container.querySelector("header")).not.toBeVisible(),
     ).toThrowError();
     expect(() =>
-      expect(container.querySelector("p")).toBeVisible()
+      expect(container.querySelector("p")).toBeVisible(),
     ).toThrowError();
   });
 
@@ -190,7 +190,7 @@ describe(".toBeVisible", () => {
 
           it("returns false to the details content", () => {
             expect(
-              subject.container.querySelector("details")
+              subject.container.querySelector("details"),
             ).not.toBeVisible();
           });
 
@@ -222,25 +222,25 @@ describe(".toBeVisible", () => {
 
         it("returns true to the nested details content", () => {
           expect(
-            subject.container.querySelector("details > details > div")
+            subject.container.querySelector("details > details > div"),
           ).toBeVisible();
         });
 
         it("returns true to the nested details summary", () => {
           expect(
-            subject.container.querySelector("details > details > summary")
+            subject.container.querySelector("details > details > summary"),
           ).toBeVisible();
         });
 
         it("returns true to the outer details content", () => {
           expect(
-            subject.container.querySelector("details > div")
+            subject.container.querySelector("details > div"),
           ).toBeVisible();
         });
 
         it("returns true to the outer details summary", () => {
           expect(
-            subject.container.querySelector("details > summary")
+            subject.container.querySelector("details > summary"),
           ).toBeVisible();
         });
       });
@@ -261,25 +261,25 @@ describe(".toBeVisible", () => {
 
         it("returns false to the nested details content", () => {
           expect(
-            subject.container.querySelector("details > details > div")
+            subject.container.querySelector("details > details > div"),
           ).not.toBeVisible();
         });
 
         it("returns true to the nested details summary", () => {
           expect(
-            subject.container.querySelector("details > details > summary")
+            subject.container.querySelector("details > details > summary"),
           ).toBeVisible();
         });
 
         it("returns true to the outer details content", () => {
           expect(
-            subject.container.querySelector("details > div")
+            subject.container.querySelector("details > div"),
           ).toBeVisible();
         });
 
         it("returns true to the outer details summary", () => {
           expect(
-            subject.container.querySelector("details > summary")
+            subject.container.querySelector("details > summary"),
           ).toBeVisible();
         });
       });
@@ -300,25 +300,25 @@ describe(".toBeVisible", () => {
 
         it("returns false to the nested details content", () => {
           expect(
-            subject.container.querySelector("details > details > div")
+            subject.container.querySelector("details > details > div"),
           ).not.toBeVisible();
         });
 
         it("returns false to the nested details summary", () => {
           expect(
-            subject.container.querySelector("details > details > summary")
+            subject.container.querySelector("details > details > summary"),
           ).not.toBeVisible();
         });
 
         it("returns false to the outer details content", () => {
           expect(
-            subject.container.querySelector("details > div")
+            subject.container.querySelector("details > div"),
           ).not.toBeVisible();
         });
 
         it("returns true to the outer details summary", () => {
           expect(
-            subject.container.querySelector("details > summary")
+            subject.container.querySelector("details > summary"),
           ).toBeVisible();
         });
       });
@@ -348,13 +348,13 @@ describe(".toBeVisible", () => {
 
           it("returns true to inner enclosed innerText", () => {
             expect(
-              subject.container.querySelector("details > details > div")
+              subject.container.querySelector("details > details > div"),
             ).toBeVisible();
           });
 
           it("returns true to inner summary", () => {
             expect(
-              subject.container.querySelector("details > details > summary")
+              subject.container.querySelector("details > details > summary"),
             ).toBeVisible();
           });
         });
@@ -383,13 +383,13 @@ describe(".toBeVisible", () => {
 
           it("returns false to inner enclosed innerText", () => {
             expect(
-              subject.container.querySelector("details > details > div")
+              subject.container.querySelector("details > details > div"),
             ).not.toBeVisible();
           });
 
           it("returns true to inner summary", () => {
             expect(
-              subject.container.querySelector("details > details > summary")
+              subject.container.querySelector("details > details > summary"),
             ).toBeVisible();
           });
         });
@@ -410,7 +410,7 @@ describe(".toBeVisible", () => {
 
           it("returns true to outer unenclosed innerText", () => {
             expect(
-              subject.container.querySelector("details")
+              subject.container.querySelector("details"),
             ).not.toBeVisible();
           });
 
@@ -420,13 +420,13 @@ describe(".toBeVisible", () => {
 
           it("returns false to inner enclosed innerText", () => {
             expect(
-              subject.container.querySelector("details > details > div")
+              subject.container.querySelector("details > details > div"),
             ).not.toBeVisible();
           });
 
           it("returns true to inner summary", () => {
             expect(
-              subject.container.querySelector("details > details > summary")
+              subject.container.querySelector("details > details > summary"),
             ).not.toBeVisible();
           });
         });

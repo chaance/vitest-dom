@@ -14,7 +14,7 @@ export function toHaveValue(htmlElement, expectedValue) {
     ["checkbox", "radio"].includes(htmlElement.type)
   ) {
     throw new Error(
-      "input with type=checkbox or type=radio cannot be used with .toHaveValue(). Use .toBeChecked() for type=checkbox or .toHaveFormValues() instead"
+      "input with type=checkbox or type=radio cannot be used with .toHaveValue(). Use .toBeChecked() for type=checkbox or .toHaveFormValues() instead",
     );
   }
 
@@ -37,7 +37,7 @@ export function toHaveValue(htmlElement, expectedValue) {
       const matcher = this.utils.matcherHint(
         `${this.isNot ? ".not" : ""}.toHaveValue`,
         "element",
-        expectedValue
+        expectedValue,
       );
       return getMessage(
         this,
@@ -45,7 +45,7 @@ export function toHaveValue(htmlElement, expectedValue) {
         `Expected the element ${to} have value`,
         expectsValue ? expectedTypedValue : "(any)",
         "Received",
-        receivedTypedValue
+        receivedTypedValue,
       );
     },
   };

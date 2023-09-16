@@ -50,7 +50,7 @@ export function toBeVisible(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeVisible`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} visible${

@@ -23,11 +23,11 @@ describe(".toHaveDescription", () => {
 
     expect(queryByTestId("single")).toHaveDescription("The description");
     expect(queryByTestId("single")).toHaveDescription(
-      expect.stringContaining("The")
+      expect.stringContaining("The"),
     );
     expect(queryByTestId("single")).toHaveDescription(/The/);
     expect(queryByTestId("single")).toHaveDescription(
-      expect.stringMatching(/The/)
+      expect.stringMatching(/The/),
     );
     expect(queryByTestId("single")).toHaveDescription(/description/);
     expect(queryByTestId("single")).not.toHaveDescription("Something else");
@@ -50,16 +50,16 @@ describe(".toHaveDescription", () => {
     `);
 
     expect(queryByTestId("multiple")).toHaveDescription(
-      "First description Second description Third description"
+      "First description Second description Third description",
     );
     expect(queryByTestId("multiple")).toHaveDescription(
-      /Second description Third/
+      /Second description Third/,
     );
     expect(queryByTestId("multiple")).toHaveDescription(
-      expect.stringContaining("Second description Third")
+      expect.stringContaining("Second description Third"),
     );
     expect(queryByTestId("multiple")).toHaveDescription(
-      expect.stringMatching(/Second description Third/)
+      expect.stringMatching(/Second description Third/),
     );
     expect(queryByTestId("multiple")).not.toHaveDescription("Something else");
     expect(queryByTestId("multiple")).not.toHaveDescription("First");
@@ -72,15 +72,15 @@ describe(".toHaveDescription", () => {
     `);
 
     expect(() =>
-      expect(queryByTestId("other")).toHaveDescription("The description")
+      expect(queryByTestId("other")).toHaveDescription("The description"),
     ).toThrowError();
 
     expect(() =>
-      expect(queryByTestId("target")).toHaveDescription("Something else")
+      expect(queryByTestId("target")).toHaveDescription("Something else"),
     ).toThrowError();
 
     expect(() =>
-      expect(queryByTestId("target")).not.toHaveDescription("The description")
+      expect(queryByTestId("target")).not.toHaveDescription("The description"),
     ).toThrowError();
   });
 
@@ -101,7 +101,7 @@ describe(".toHaveDescription", () => {
     `);
 
     expect(queryByTestId("target")).toHaveDescription(
-      "Step 1 of 4 And extra description"
+      "Step 1 of 4 And extra description",
     );
   });
 
@@ -133,7 +133,7 @@ describe(".toHaveDescription", () => {
     `);
 
     expect(queryByTestId("multiple")).toHaveDescription(
-      "First description Second description Third description"
+      "First description Second description Third description",
     );
   });
 

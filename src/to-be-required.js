@@ -64,7 +64,7 @@ export function toBeRequired(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeRequired`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} required:`,

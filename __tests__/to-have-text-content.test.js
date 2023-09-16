@@ -4,7 +4,7 @@ import { describe, expect, test } from "vitest";
 describe(".toHaveTextContent", () => {
   test("handles positive test cases", () => {
     const { queryByTestId } = render(
-      `<span data-testid="count-value">2</span>`
+      `<span data-testid="count-value">2</span>`,
     );
 
     expect(queryByTestId("count-value")).toHaveTextContent("2");
@@ -17,7 +17,7 @@ describe(".toHaveTextContent", () => {
     const { container } = render(`<span>example</span>`);
 
     expect(container.querySelector("span").firstChild).toHaveTextContent(
-      "example"
+      "example",
     );
   });
 
@@ -29,18 +29,18 @@ describe(".toHaveTextContent", () => {
 
   test("handles negative test cases", () => {
     const { queryByTestId } = render(
-      `<span data-testid="count-value">2</span>`
+      `<span data-testid="count-value">2</span>`,
     );
 
     expect(() =>
-      expect(queryByTestId("count-value2")).toHaveTextContent("2")
+      expect(queryByTestId("count-value2")).toHaveTextContent("2"),
     ).toThrowError();
 
     expect(() =>
-      expect(queryByTestId("count-value")).toHaveTextContent("3")
+      expect(queryByTestId("count-value")).toHaveTextContent("3"),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("count-value")).not.toHaveTextContent("2")
+      expect(queryByTestId("count-value")).not.toHaveTextContent("2"),
     ).toThrowError();
   });
 
@@ -98,7 +98,7 @@ describe(".toHaveTextContent", () => {
 
     expect(container.querySelector("span")).toHaveTextContent("Sensitive text");
     expect(container.querySelector("span")).not.toHaveTextContent(
-      "sensitive text"
+      "sensitive text",
     );
   });
 
@@ -107,7 +107,7 @@ describe(".toHaveTextContent", () => {
     const { container } = render("<span>not empty</span>");
 
     expect(() =>
-      expect(container.querySelector("span")).toHaveTextContent("")
+      expect(container.querySelector("span")).toHaveTextContent(""),
     ).toThrowError(/toBeEmptyDOMElement\(\)/);
   });
 });

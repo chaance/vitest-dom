@@ -14,11 +14,11 @@ export function toContainElement(container, element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toContainElement`,
           "element",
-          "element"
+          "element",
         ),
         "",
         this.utils.RECEIVED_COLOR(`${this.utils.stringify(
-          container.cloneNode(false)
+          container.cloneNode(false),
         )} ${
           this.isNot ? "contains:" : "does not contain:"
         } ${this.utils.stringify(element ? element.cloneNode(false) : element)}

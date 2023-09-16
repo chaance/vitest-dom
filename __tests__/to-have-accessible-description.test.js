@@ -48,7 +48,7 @@ describe(".toHaveAccessibleDescription", () => {
     expect(logo).toHaveAccessibleDescription("The logo of Our Company");
     expect(logo).toHaveAccessibleDescription(/logo of our company/i);
     expect(logo).toHaveAccessibleDescription(
-      expect.stringContaining("logo of Our Company")
+      expect.stringContaining("logo of Our Company"),
     );
     expect(() => {
       expect(logo).toHaveAccessibleDescription("Our company's logo");
@@ -70,19 +70,19 @@ describe(".toHaveAccessibleDescription", () => {
   `);
 
     expect(queryByTestId("multiple")).toHaveAccessibleDescription(
-      "First description Second description Third description"
+      "First description Second description Third description",
     );
     expect(queryByTestId("multiple")).toHaveAccessibleDescription(
-      /Second description Third/
+      /Second description Third/,
     );
     expect(queryByTestId("multiple")).toHaveAccessibleDescription(
-      expect.stringContaining("Second description Third")
+      expect.stringContaining("Second description Third"),
     );
     expect(queryByTestId("multiple")).toHaveAccessibleDescription(
-      expect.stringMatching(/Second description Third/)
+      expect.stringMatching(/Second description Third/),
     );
     expect(queryByTestId("multiple")).not.toHaveAccessibleDescription(
-      "Something else"
+      "Something else",
     );
     expect(queryByTestId("multiple")).not.toHaveAccessibleDescription("First");
   });
@@ -104,7 +104,7 @@ describe(".toHaveAccessibleDescription", () => {
     `);
 
     expect(queryByTestId("target")).toHaveAccessibleDescription(
-      "Step 1 of 4 And extra description"
+      "Step 1 of 4 And extra description",
     );
   });
 });

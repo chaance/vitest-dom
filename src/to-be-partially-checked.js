@@ -39,7 +39,7 @@ export function toBePartiallyChecked(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBePartiallyChecked`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} partially checked:`,

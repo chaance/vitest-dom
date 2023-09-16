@@ -60,7 +60,7 @@ function cssParse(css, options) {
 
   function error(msg) {
     let err = new Error(
-      options.source + ":" + lineno + ":" + column + ": " + msg
+      options.source + ":" + lineno + ":" + column + ": " + msg,
     );
     err.reason = msg;
     err.filename = options.source;

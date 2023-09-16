@@ -150,7 +150,7 @@ describe(".toHaveFormValues", () => {
           skills: [],
           description: "",
         },
-      })
+      }),
     ).toHaveFormValues({
       title: "",
       salary: null,
@@ -208,7 +208,7 @@ describe(".toHaveFormValues", () => {
         renderForm({
           selectSingle: renderRadioButtons,
           values: { category: undefined },
-        })
+        }),
       ).toHaveFormValues({
         category: undefined,
       });
@@ -285,7 +285,7 @@ function renderCheckboxes(name, label, options, value = []) {
             />
             <label for="${option.value}">${option.label}</label>
           </div>
-        `
+        `,
       )}
     </fieldset>
   `;
@@ -308,7 +308,7 @@ function renderRadioButtons(name, label, options, value = undefined) {
             />
             <label for="${option.value}">${option.label}</label>
           </div>
-        `
+        `,
       )}
     </fieldset>
   `;
@@ -327,7 +327,7 @@ function renderSelect(name, label, options, value, multiple) {
           >
             ${option.label}
           </option>
-        `
+        `,
       )}
     </select>
   `;
@@ -339,7 +339,7 @@ function renderSelectSingle(name, label, options, value = undefined) {
     label,
     options,
     value === undefined || value === null ? [] : [value],
-    false
+    false,
   );
 }
 

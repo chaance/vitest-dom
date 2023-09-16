@@ -42,7 +42,7 @@ export function toBeChecked(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeChecked`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} checked:`,
@@ -55,7 +55,7 @@ export function toBeChecked(element) {
 function supportedRolesSentence() {
   return toSentence(
     supportedRoles().map((role) => `role="${role}"`),
-    { lastWordConnector: " or " }
+    { lastWordConnector: " or " },
   );
 }
 

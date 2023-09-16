@@ -35,9 +35,9 @@ export function toHaveAttribute(htmlElement, name, expectedValue) {
           comment: getAttributeComment(
             this.utils.stringify,
             name,
-            expectedValue
+            expectedValue,
           ),
-        }
+        },
       );
       return getMessage(
         this,
@@ -45,7 +45,7 @@ export function toHaveAttribute(htmlElement, name, expectedValue) {
         `Expected the element ${to} have attribute`,
         printAttribute(this.utils.stringify, name, expectedValue),
         "Received",
-        receivedAttribute
+        receivedAttribute,
       );
     },
   };

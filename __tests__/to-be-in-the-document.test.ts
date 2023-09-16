@@ -14,7 +14,7 @@ test(".toBeInTheDocument", () => {
         this.attachShadow({ mode: "open" }).innerHTML =
           '<div data-testid="custom-element-child"></div>';
       }
-    }
+    },
   );
 
   document.body.innerHTML = `
@@ -42,24 +42,24 @@ test(".toBeInTheDocument", () => {
   const expectToBe = /expect.*\.toBeInTheDocument/;
   const expectNotToBe = /expect.*not\.toBeInTheDocument/;
   expect(() => expect(htmlElement).not.toBeInTheDocument()).toThrowError(
-    expectNotToBe
+    expectNotToBe,
   );
   expect(() => expect(svgElement).not.toBeInTheDocument()).toThrowError(
-    expectNotToBe
+    expectNotToBe,
   );
   expect(() => expect(detachedElement).toBeInTheDocument()).toThrowError(
-    expectToBe
+    expectToBe,
   );
   expect(() => expect(fakeElement).toBeInTheDocument()).toThrowError(
-    HtmlElementTypeError
+    HtmlElementTypeError,
   );
   expect(() => expect(nullElement).toBeInTheDocument()).toThrowError(
-    HtmlElementTypeError
+    HtmlElementTypeError,
   );
   expect(() => expect(undefinedElement).toBeInTheDocument()).toThrowError(
-    HtmlElementTypeError
+    HtmlElementTypeError,
   );
   expect(() => expect(undefinedElement).not.toBeInTheDocument()).toThrowError(
-    HtmlElementTypeError
+    HtmlElementTypeError,
   );
 });

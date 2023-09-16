@@ -10,7 +10,7 @@ export function toHaveFocus(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toHaveFocus`,
           "element",
-          ""
+          "",
         ),
         "",
         ...(this.isNot
@@ -23,7 +23,7 @@ export function toHaveFocus(element) {
               `  ${this.utils.printExpected(element)}`,
               "Received element with focus:",
               `  ${this.utils.printReceived(
-                element.ownerDocument.activeElement
+                element.ownerDocument.activeElement,
               )}`,
             ]),
       ].join("\n");

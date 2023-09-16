@@ -19,45 +19,45 @@ test(".toHaveAttribute", () => {
   expect(queryByTestId("ok-button")).not.toHaveAttribute("height");
 
   expect(() =>
-    expect(queryByTestId("ok-button")).not.toHaveAttribute("disabled")
+    expect(queryByTestId("ok-button")).not.toHaveAttribute("disabled"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("ok-button")).not.toHaveAttribute("type")
+    expect(queryByTestId("ok-button")).not.toHaveAttribute("type"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("ok-button")).toHaveAttribute("class")
+    expect(queryByTestId("ok-button")).toHaveAttribute("class"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("ok-button")).not.toHaveAttribute("type", "submit")
+    expect(queryByTestId("ok-button")).not.toHaveAttribute("type", "submit"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("ok-button")).toHaveAttribute("type", "button")
+    expect(queryByTestId("ok-button")).toHaveAttribute("type", "button"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("svg-element")).not.toHaveAttribute("width")
+    expect(queryByTestId("svg-element")).not.toHaveAttribute("width"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("svg-element")).not.toHaveAttribute("width", "12")
+    expect(queryByTestId("svg-element")).not.toHaveAttribute("width", "12"),
   ).toThrowError();
   expect(() =>
-    expect({ thisIsNot: "an html element" }).not.toHaveAttribute()
+    expect({ thisIsNot: "an html element" }).not.toHaveAttribute(),
   ).toThrowError();
 
   // Asymmetric matchers
   expect(queryByTestId("ok-button")).toHaveAttribute(
     "type",
-    expect.stringContaining("sub")
+    expect.stringContaining("sub"),
   );
   expect(queryByTestId("ok-button")).toHaveAttribute(
     "type",
-    expect.stringMatching(/sub*/)
+    expect.stringMatching(/sub*/),
   );
   expect(queryByTestId("ok-button")).toHaveAttribute("type", expect.anything());
 
   expect(() =>
     expect(queryByTestId("ok-button")).toHaveAttribute(
       "type",
-      expect.not.stringContaining("sub")
-    )
+      expect.not.stringContaining("sub"),
+    ),
   ).toThrowError();
 });

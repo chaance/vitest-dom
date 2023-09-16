@@ -3,7 +3,7 @@ import { checkHtmlElement, getMessage } from "./utils";
 
 export function toHaveAccessibleDescription(
   htmlElement,
-  expectedAccessibleDescription
+  expectedAccessibleDescription,
 ) {
   checkHtmlElement(htmlElement, toHaveAccessibleDescription, this);
   const actualAccessibleDescription = computeAccessibleDescription(htmlElement);
@@ -20,7 +20,7 @@ export function toHaveAccessibleDescription(
         ? expectedAccessibleDescription.test(actualAccessibleDescription)
         : this.equals(
             actualAccessibleDescription,
-            expectedAccessibleDescription
+            expectedAccessibleDescription,
           );
   }
 
@@ -34,12 +34,12 @@ export function toHaveAccessibleDescription(
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.${toHaveAccessibleDescription.name}`,
           "element",
-          ""
+          "",
         ),
         `Expected element ${to} have accessible description`,
         expectedAccessibleDescription,
         "Received",
-        actualAccessibleDescription
+        actualAccessibleDescription,
       );
     },
   };

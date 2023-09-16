@@ -53,16 +53,16 @@ describe(".toBeInvalid", () => {
 
     // negative test cases wrapped in throwError assertions for coverage.
     expect(() =>
-      expect(queryByTestId("no-aria-invalid")).toBeInvalid()
+      expect(queryByTestId("no-aria-invalid")).toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid")).not.toBeInvalid()
+      expect(queryByTestId("aria-invalid")).not.toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-value")).not.toBeInvalid()
+      expect(queryByTestId("aria-invalid-value")).not.toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-false")).toBeInvalid()
+      expect(queryByTestId("aria-invalid-false")).toBeInvalid(),
     ).toThrowError();
     expect(() => expect(invalidInputNode).not.toBeInvalid()).toThrowError();
   });
@@ -101,16 +101,16 @@ describe(".toBeInvalid", () => {
     // negative test cases wrapped in throwError assertions for coverage.
     expect(() => expect(queryByTestId("valid")).toBeInvalid()).toThrowError();
     expect(() =>
-      expect(queryByTestId("no-aria-invalid")).toBeInvalid()
+      expect(queryByTestId("no-aria-invalid")).toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid")).not.toBeInvalid()
+      expect(queryByTestId("aria-invalid")).not.toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-value")).not.toBeInvalid()
+      expect(queryByTestId("aria-invalid-value")).not.toBeInvalid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-false")).toBeInvalid()
+      expect(queryByTestId("aria-invalid-false")).toBeInvalid(),
     ).toThrowError();
   });
 });
@@ -134,16 +134,16 @@ describe(".toBeValid", () => {
 
     // negative test cases wrapped in throwError assertions for coverage.
     expect(() =>
-      expect(queryByTestId("no-aria-invalid")).not.toBeValid()
+      expect(queryByTestId("no-aria-invalid")).not.toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid")).toBeValid()
+      expect(queryByTestId("aria-invalid")).toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-value")).toBeValid()
+      expect(queryByTestId("aria-invalid-value")).toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-false")).not.toBeValid()
+      expect(queryByTestId("aria-invalid-false")).not.toBeValid(),
     ).toThrowError();
     expect(() => expect(invalidInputNode).toBeValid()).toThrowError();
   });
@@ -182,16 +182,16 @@ describe(".toBeValid", () => {
     // negative test cases wrapped in throwError assertions for coverage.
     expect(() => expect(queryByTestId("valid")).not.toBeValid()).toThrowError();
     expect(() =>
-      expect(queryByTestId("no-aria-invalid")).not.toBeValid()
+      expect(queryByTestId("no-aria-invalid")).not.toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid")).toBeValid()
+      expect(queryByTestId("aria-invalid")).toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-value")).toBeValid()
+      expect(queryByTestId("aria-invalid-value")).toBeValid(),
     ).toThrowError();
     expect(() =>
-      expect(queryByTestId("aria-invalid-false")).not.toBeValid()
+      expect(queryByTestId("aria-invalid-false")).not.toBeValid(),
     ).toThrowError();
   });
 });

@@ -15,10 +15,10 @@ test("it should work as expected", () => {
   expect(queryByTestId("select")).not.toHaveDisplayValue("Select");
   expect(queryByTestId("select")).not.toHaveDisplayValue("Banana");
   expect(() =>
-    expect(queryByTestId("select")).not.toHaveDisplayValue("Select a fruit...")
+    expect(queryByTestId("select")).not.toHaveDisplayValue("Select a fruit..."),
   ).toThrow();
   expect(() =>
-    expect(queryByTestId("select")).toHaveDisplayValue("Ananas")
+    expect(queryByTestId("select")).toHaveDisplayValue("Ananas"),
   ).toThrow();
 
   queryByTestId("select").value = "banana";
@@ -48,7 +48,7 @@ describe("with multiple select", () => {
       expect(subject.queryByTestId("select")).not.toHaveDisplayValue([
         "Ananas",
         "Avocado",
-      ])
+      ]),
     ).toThrow();
     expect(subject.queryByTestId("select")).not.toHaveDisplayValue([
       "Ananas",
@@ -57,7 +57,7 @@ describe("with multiple select", () => {
     ]);
     expect(subject.queryByTestId("select")).not.toHaveDisplayValue("Ananas");
     expect(() =>
-      expect(subject.queryByTestId("select")).toHaveDisplayValue("Ananas")
+      expect(subject.queryByTestId("select")).toHaveDisplayValue("Ananas"),
     ).toThrow();
 
     Array.from(subject.queryByTestId("select").options).forEach((option) => {
@@ -101,17 +101,17 @@ test("it should work with input elements", () => {
 
 test("it should work with textarea elements", () => {
   const { queryByTestId } = render(
-    '<textarea data-testid="textarea-example">An example description here.</textarea>'
+    '<textarea data-testid="textarea-example">An example description here.</textarea>',
   );
 
   expect(queryByTestId("textarea-example")).toHaveDisplayValue(
-    "An example description here."
+    "An example description here.",
   );
   expect(queryByTestId("textarea-example")).toHaveDisplayValue(/example/);
 
   queryByTestId("textarea-example").value = "Another example";
   expect(queryByTestId("textarea-example")).toHaveDisplayValue(
-    "Another example"
+    "Another example",
   );
 });
 
@@ -130,7 +130,7 @@ test("it should throw if element is not valid", () => {
   }
 
   expect(errorMessage).toMatchInlineSnapshot(
-    '".toHaveDisplayValue() currently supports only input, textarea or select elements, try with another matcher instead."'
+    '".toHaveDisplayValue() currently supports only input, textarea or select elements, try with another matcher instead."',
   );
 
   try {
@@ -140,7 +140,7 @@ test("it should throw if element is not valid", () => {
   }
 
   expect(errorMessage).toMatchInlineSnapshot(
-    '".toHaveDisplayValue() currently does not support input[type=\\"radio\\"], try with another matcher instead."'
+    '".toHaveDisplayValue() currently does not support input[type=\\"radio\\"], try with another matcher instead."',
   );
 
   try {
@@ -150,7 +150,7 @@ test("it should throw if element is not valid", () => {
   }
 
   expect(errorMessage).toMatchInlineSnapshot(
-    '".toHaveDisplayValue() currently does not support input[type=\\"checkbox\\"], try with another matcher instead."'
+    '".toHaveDisplayValue() currently does not support input[type=\\"checkbox\\"], try with another matcher instead."',
   );
 });
 

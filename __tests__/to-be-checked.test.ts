@@ -64,144 +64,144 @@ describe(".toBeChecked", () => {
 
   test("throws when checkbox input is checked but expected not to be", () => {
     const { queryByTestId } = render(
-      `<input type="checkbox" checked data-testid="input-checked" />`
+      `<input type="checkbox" checked data-testid="input-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("input-checked")).not.toBeChecked()
+      expect(queryByTestId("input-checked")).not.toBeChecked(),
     ).toThrowError();
   });
 
   test("throws when input checkbox is not checked but expected to be", () => {
     const { queryByTestId } = render(
-      `<input type="checkbox" data-testid="input-empty" />`
+      `<input type="checkbox" data-testid="input-empty" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("input-empty")).toBeChecked()
+      expect(queryByTestId("input-empty")).toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" is checked but expected not to be', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />`
+      `<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-checked")).not.toBeChecked()
+      expect(queryByTestId("aria-checkbox-checked")).not.toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" is not checked but expected to be', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="false" data-testid="aria-checkbox-unchecked" />`
+      `<div role="checkbox" aria-checked="false" data-testid="aria-checkbox-unchecked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-unchecked")).toBeChecked()
+      expect(queryByTestId("aria-checkbox-unchecked")).toBeChecked(),
     ).toThrowError();
   });
 
   test("throws when radio input is checked but expected not to be", () => {
     const { queryByTestId } = render(
-      `<input type="radio" checked data-testid="input-radio-checked" />`
+      `<input type="radio" checked data-testid="input-radio-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("input-radio-checked")).not.toBeChecked()
+      expect(queryByTestId("input-radio-checked")).not.toBeChecked(),
     ).toThrowError();
   });
 
   test("throws when input radio is not checked but expected to be", () => {
     const { queryByTestId } = render(
-      `<input type="radio" data-testid="input-radio-unchecked" />`
+      `<input type="radio" data-testid="input-radio-unchecked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("input-radio-unchecked")).toBeChecked()
+      expect(queryByTestId("input-radio-unchecked")).toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="radio" is checked but expected not to be', () => {
     const { queryByTestId } = render(
-      `<div role="radio" aria-checked="true" data-testid="aria-radio-checked" />`
+      `<div role="radio" aria-checked="true" data-testid="aria-radio-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-radio-checked")).not.toBeChecked()
+      expect(queryByTestId("aria-radio-checked")).not.toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="radio" is not checked but expected to be', () => {
     const { queryByTestId } = render(
-      `<div role="radio" aria-checked="false" data-testid="aria-radio-unchecked" />`
+      `<div role="radio" aria-checked="false" data-testid="aria-radio-unchecked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-unchecked")).toBeChecked()
+      expect(queryByTestId("aria-checkbox-unchecked")).toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="switch" is checked but expected not to be', () => {
     const { queryByTestId } = render(
-      `<div role="switch" aria-checked="true" data-testid="aria-switch-checked" />`
+      `<div role="switch" aria-checked="true" data-testid="aria-switch-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-switch-checked")).not.toBeChecked()
+      expect(queryByTestId("aria-switch-checked")).not.toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="switch" is not checked but expected to be', () => {
     const { queryByTestId } = render(
-      `<div role="switch" aria-checked="false" data-testid="aria-switch-unchecked" />`
+      `<div role="switch" aria-checked="false" data-testid="aria-switch-unchecked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-switch-unchecked")).toBeChecked()
+      expect(queryByTestId("aria-switch-unchecked")).toBeChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" has an invalid aria-checked attribute', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="something" data-testid="aria-checkbox-invalid" />`
+      `<div role="checkbox" aria-checked="something" data-testid="aria-checkbox-invalid" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-invalid")).toBeChecked()
+      expect(queryByTestId("aria-checkbox-invalid")).toBeChecked(),
     ).toThrowError(
-      /only inputs with .* a valid aria-checked attribute can be used/
+      /only inputs with .* a valid aria-checked attribute can be used/,
     );
   });
 
   test('throws when element with role="radio" has an invalid aria-checked attribute', () => {
     const { queryByTestId } = render(
-      `<div role="radio" aria-checked="something" data-testid="aria-radio-invalid" />`
+      `<div role="radio" aria-checked="something" data-testid="aria-radio-invalid" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-radio-invalid")).toBeChecked()
+      expect(queryByTestId("aria-radio-invalid")).toBeChecked(),
     ).toThrowError(
-      /only inputs with .* a valid aria-checked attribute can be used/
+      /only inputs with .* a valid aria-checked attribute can be used/,
     );
   });
 
   test('throws when element with role="switch" has an invalid aria-checked attribute', () => {
     const { queryByTestId } = render(
-      `<div role="switch" aria-checked="something" data-testid="aria-switch-invalid" />`
+      `<div role="switch" aria-checked="something" data-testid="aria-switch-invalid" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-switch-invalid")).toBeChecked()
+      expect(queryByTestId("aria-switch-invalid")).toBeChecked(),
     ).toThrowError(
-      /only inputs with .* a valid aria-checked attribute can be used/
+      /only inputs with .* a valid aria-checked attribute can be used/,
     );
   });
 
   test("throws when the element is not an input", () => {
     const { queryByTestId } = render(`<select data-testid="select"></select>`);
     expect(() => expect(queryByTestId("select")).toBeChecked()).toThrowError(
-      /only inputs with type="checkbox" or type="radio" or elements with.* role="checkbox".* role="menuitemcheckbox".* role="radio".* role="switch" .* can be used/
+      /only inputs with type="checkbox" or type="radio" or elements with.* role="checkbox".* role="menuitemcheckbox".* role="radio".* role="switch" .* can be used/,
     );
   });
 });

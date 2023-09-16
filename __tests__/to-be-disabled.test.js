@@ -6,7 +6,7 @@ const window = document.defaultView;
 
 window.customElements.define(
   "custom-element",
-  class extends window.HTMLElement {}
+  class extends window.HTMLElement {},
 );
 
 test(".toBeDisabled", () => {
@@ -43,7 +43,7 @@ test(".toBeDisabled", () => {
 
   expect(queryByTestId("button-element")).toBeDisabled();
   expect(() =>
-    expect(queryByTestId("button-element")).not.toBeDisabled()
+    expect(queryByTestId("button-element")).not.toBeDisabled(),
   ).toThrowError();
   expect(queryByTestId("textarea-element")).toBeDisabled();
   expect(queryByTestId("input-element")).toBeDisabled();
@@ -62,10 +62,10 @@ test(".toBeDisabled", () => {
   expect(queryByTestId("a-element")).not.toBeDisabled();
   expect(queryByTestId("deep-a-element")).not.toBeDisabled();
   expect(() =>
-    expect(queryByTestId("a-element")).toBeDisabled()
+    expect(queryByTestId("a-element")).toBeDisabled(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("deep-a-element")).toBeDisabled()
+    expect(queryByTestId("deep-a-element")).toBeDisabled(),
   ).toThrowError();
 });
 
@@ -205,11 +205,11 @@ test(".toBeEnabled", () => {
 
   expect(queryByTestId("a-element")).toBeEnabled();
   expect(() =>
-    expect(queryByTestId("a-element")).not.toBeEnabled()
+    expect(queryByTestId("a-element")).not.toBeEnabled(),
   ).toThrowError();
   expect(queryByTestId("deep-a-element")).toBeEnabled();
   expect(() =>
-    expect(queryByTestId("deep-a-element")).not.toBeEnabled()
+    expect(queryByTestId("deep-a-element")).not.toBeEnabled(),
   ).toThrowError();
 });
 

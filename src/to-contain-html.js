@@ -20,7 +20,7 @@ export function toContainHTML(container, htmlText) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toContainHTML`,
           "element",
-          ""
+          "",
         ),
         "Expected:",
         `  ${this.utils.EXPECTED_COLOR(htmlText)}`,

@@ -33,7 +33,7 @@ export function toHaveClass(htmlElement, ...params) {
   const received = splitClassNames(htmlElement.getAttribute("class"));
   const expected = expectedClassNames.reduce(
     (acc, className) => acc.concat(splitClassNames(className)),
-    []
+    [],
   );
 
   if (options.exact) {
@@ -46,12 +46,12 @@ export function toHaveClass(htmlElement, ...params) {
           this.utils.matcherHint(
             `${this.isNot ? ".not" : ""}.toHaveClass`,
             "element",
-            this.utils.printExpected(expected.join(" "))
+            this.utils.printExpected(expected.join(" ")),
           ),
           `Expected the element ${to} have EXACTLY defined classes`,
           expected.join(" "),
           "Received",
-          received.join(" ")
+          received.join(" "),
         );
       },
     };
@@ -67,12 +67,12 @@ export function toHaveClass(htmlElement, ...params) {
             this.utils.matcherHint(
               `${this.isNot ? ".not" : ""}.toHaveClass`,
               "element",
-              this.utils.printExpected(expected.join(" "))
+              this.utils.printExpected(expected.join(" ")),
             ),
             `Expected the element ${to} have class`,
             expected.join(" "),
             "Received",
-            received.join(" ")
+            received.join(" "),
           );
         },
       }
@@ -86,7 +86,7 @@ export function toHaveClass(htmlElement, ...params) {
                 "Expected the element to have classes",
                 "(none)",
                 "Received",
-                received.join(" ")
+                received.join(" "),
               )
             : [
                 this.utils.matcherHint(`.toHaveClass`, "element"),

@@ -30,7 +30,7 @@ describe(".toHaveAccessibleName", () => {
     expect(button).toHaveAccessibleName("Continue to the next step");
     expect(button).toHaveAccessibleName(/continue to the next step/i);
     expect(button).toHaveAccessibleName(
-      expect.stringContaining("Continue to the next")
+      expect.stringContaining("Continue to the next"),
     );
     expect(button).not.toHaveAccessibleName("Next step");
     expect(() => {
@@ -60,10 +60,10 @@ describe(".toHaveAccessibleName", () => {
     const firstNameField = queryByTestId("first-name-field");
     expect(firstNameField).toHaveAccessibleName("First name");
     expect(queryByTestId("first-name-field")).toHaveAccessibleName(
-      /first name/i
+      /first name/i,
     );
     expect(firstNameField).toHaveAccessibleName(
-      expect.stringContaining("First")
+      expect.stringContaining("First"),
     );
     expect(() => {
       expect(firstNameField).toHaveAccessibleName("Last name");
@@ -76,16 +76,16 @@ describe(".toHaveAccessibleName", () => {
     expect(checkboxField).toHaveAccessibleName("Accept terms and conditions");
     expect(checkboxField).toHaveAccessibleName(/accept terms/i);
     expect(checkboxField).toHaveAccessibleName(
-      expect.stringContaining("Accept terms")
+      expect.stringContaining("Accept terms"),
     );
     expect(() => {
       expect(checkboxField).toHaveAccessibleName(
-        "Accept our terms and conditions"
+        "Accept our terms and conditions",
       );
     }).toThrow(/expected element to have accessible name/i);
     expect(() => {
       expect(checkboxField).not.toHaveAccessibleName(
-        "Accept terms and conditions"
+        "Accept terms and conditions",
       );
     }).toThrow(/expected element not to have accessible name/i);
   });
@@ -125,7 +125,7 @@ describe(".toHaveAccessibleName", () => {
     expect(firstNameField).toHaveAccessibleName("Enter your name");
     expect(firstNameField).toHaveAccessibleName(/enter your name/i);
     expect(firstNameField).toHaveAccessibleName(
-      expect.stringContaining("your name")
+      expect.stringContaining("your name"),
     );
     expect(() => {
       expect(firstNameField).toHaveAccessibleName("First name");
@@ -136,21 +136,21 @@ describe(".toHaveAccessibleName", () => {
 
     const checkboxField = queryByTestId("checkbox-field");
     expect(checkboxField).not.toHaveAccessibleName(
-      "Accept terms and conditions"
+      "Accept terms and conditions",
     );
     expect(checkboxField).toHaveAccessibleName(
-      "Accept our terms and conditions"
+      "Accept our terms and conditions",
     );
     expect(checkboxField).toHaveAccessibleName(/accept our terms/i);
     expect(checkboxField).toHaveAccessibleName(
-      expect.stringContaining("terms")
+      expect.stringContaining("terms"),
     );
     expect(() => {
       expect(checkboxField).toHaveAccessibleName("Accept terms and conditions");
     }).toThrow(/expected element to have accessible name/i);
     expect(() => {
       expect(checkboxField).not.toHaveAccessibleName(
-        "Accept our terms and conditions"
+        "Accept our terms and conditions",
       );
     }).toThrow(/expected element not to have accessible name/i);
 
@@ -205,7 +205,7 @@ describe(".toHaveAccessibleName", () => {
     expect(firstNameField).toHaveAccessibleName("Enter your name");
     expect(firstNameField).toHaveAccessibleName(/enter your name/i);
     expect(firstNameField).toHaveAccessibleName(
-      expect.stringContaining("your name")
+      expect.stringContaining("your name"),
     );
     expect(() => {
       expect(firstNameField).toHaveAccessibleName("First name");
@@ -216,21 +216,21 @@ describe(".toHaveAccessibleName", () => {
 
     const checkboxField = queryByTestId("checkbox-field");
     expect(checkboxField).not.toHaveAccessibleName(
-      "Accept terms and conditions"
+      "Accept terms and conditions",
     );
     expect(checkboxField).toHaveAccessibleName(
-      "Accept our terms and conditions"
+      "Accept our terms and conditions",
     );
     expect(checkboxField).toHaveAccessibleName(/accept our terms/i);
     expect(checkboxField).toHaveAccessibleName(
-      expect.stringContaining("terms")
+      expect.stringContaining("terms"),
     );
     expect(() => {
       expect(checkboxField).toHaveAccessibleName("Accept terms and conditions");
     }).toThrow(/expected element to have accessible name/i);
     expect(() => {
       expect(checkboxField).not.toHaveAccessibleName(
-        "Accept our terms and conditions"
+        "Accept our terms and conditions",
       );
     }).toThrow(/expected element not to have accessible name/i);
 

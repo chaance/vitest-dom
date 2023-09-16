@@ -17,7 +17,7 @@ export function toHaveDescription(htmlElement, checkWith) {
       .map((descriptionID) => document.getElementById(descriptionID))
       .filter(Boolean);
     description = normalize(
-      descriptionEls.map((el) => el.textContent).join(" ")
+      descriptionEls.map((el) => el.textContent).join(" "),
     );
   }
 
@@ -34,12 +34,12 @@ export function toHaveDescription(htmlElement, checkWith) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toHaveDescription`,
           "element",
-          ""
+          "",
         ),
         `Expected the element ${to} have description`,
         this.utils.printExpected(checkWith),
         "Received",
-        this.utils.printReceived(description)
+        this.utils.printReceived(description),
       );
     },
   };

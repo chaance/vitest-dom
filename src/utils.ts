@@ -8,14 +8,14 @@ interface ErrorContext {
     printWithType(
       name: string,
       received: unknown,
-      print: (val: unknown) => string
+      print: (val: unknown) => string,
     ): string;
     printReceived(val: unknown): string;
     matcherHint(
       matcherName: string,
       received: string,
       expected?: string,
-      options?: { secondArgument?: string; isDirectExpectCall?: boolean }
+      options?: { secondArgument?: string; isDirectExpectCall?: boolean },
     ): string;
     stringify(val: unknown): string;
     RECEIVED_COLOR(str: string): string;
@@ -29,7 +29,7 @@ class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
     expectedString: string,
     received: HTMLElement,
     matcherFn: MatcherFn,
-    context: Ctx
+    context: Ctx,
   ) {
     super();
 
@@ -41,7 +41,7 @@ class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
       withType = context.utils.printWithType(
         "Received",
         received,
-        context.utils.printReceived
+        context.utils.printReceived,
       );
     } catch (e) {
       // Can throw for Document:
@@ -51,11 +51,11 @@ class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
       context.utils.matcherHint(
         `${context.isNot ? ".not" : ""}.${matcherFn.name}`,
         "received",
-        ""
+        "",
       ),
       "",
       `${context.utils.RECEIVED_COLOR(
-        "received"
+        "received",
       )} value must ${expectedString}.`,
       withType,
     ].join("\n");
@@ -63,7 +63,7 @@ class GenericTypeError<Ctx extends ErrorContext = any> extends Error {
 }
 
 class HtmlElementTypeError<
-  Ctx extends ErrorContext = any
+  Ctx extends ErrorContext = any,
 > extends GenericTypeError<Ctx> {
   constructor(element: HTMLElement, matcherFn: MatcherFn, context: Ctx) {
     super("be an HTMLElement or an SVGElement", element, matcherFn, context);
@@ -71,7 +71,7 @@ class HtmlElementTypeError<
 }
 
 class NodeTypeError<
-  Ctx extends ErrorContext = any
+  Ctx extends ErrorContext = any,
 > extends GenericTypeError<Ctx> {
   constructor(element: HTMLElement, matcherFn: MatcherFn, context: Ctx) {
     super("be a Node", element, matcherFn, context);
@@ -82,7 +82,7 @@ function checkHasWindow<Ctx extends ErrorContext = any>(
   htmlElement: HTMLElement,
   ErrorClass: typeof HtmlElementTypeError | typeof NodeTypeError,
   matcherFn: MatcherFn,
-  context: Ctx
+  context: Ctx,
 ): asserts htmlElement is HTMLElement & {
   ownerDocument: Document & { defaultView: Window };
 } {
@@ -98,7 +98,7 @@ function checkHasWindow<Ctx extends ErrorContext = any>(
 function checkNode<Ctx extends ErrorContext = any>(
   node: HTMLElement,
   matcherFn: MatcherFn,
-  context: Ctx
+  context: Ctx,
 ) {
   checkHasWindow(node, NodeTypeError, matcherFn, context);
   const window = node.ownerDocument.defaultView;
@@ -110,7 +110,7 @@ function checkNode<Ctx extends ErrorContext = any>(
 function checkHtmlElement<Ctx extends ErrorContext = any>(
   htmlElement: HTMLElement,
   matcher: MatcherFn,
-  context: Ctx
+  context: Ctx,
 ) {
   checkHasWindow(htmlElement, HtmlElementTypeError, matcher, context);
   const window = htmlElement.ownerDocument.defaultView;
@@ -131,7 +131,7 @@ class InvalidCSSError<Ctx extends ErrorContext = any> extends Error {
       css: string;
     },
     matcherFn: MatcherFn,
-    context: Ctx
+    context: Ctx,
   ) {
     super();
 
@@ -150,7 +150,7 @@ class InvalidCSSError<Ctx extends ErrorContext = any> extends Error {
 function parseCSS<Ctx extends ErrorContext = any>(
   css: string,
   matcherFn: MatcherFn,
-  context: Ctx
+  context: Ctx,
 ) {
   const ast = cssParse(`selector { ${css} }`, { silent: true }).stylesheet;
 
@@ -163,7 +163,7 @@ function parseCSS<Ctx extends ErrorContext = any>(
         message: `Syntax error parsing expected css: ${reason} on line: ${line}`,
       },
       matcherFn,
-      context
+      context,
     );
   }
 
@@ -172,7 +172,7 @@ function parseCSS<Ctx extends ErrorContext = any>(
     .reduce(
       (obj: any, { property, value }) =>
         Object.assign(obj, { [property]: value }),
-      {} as Record<"property" | "value", string>
+      {} as Record<"property" | "value", string>,
     );
   return parsedRules;
 }
@@ -187,15 +187,15 @@ function getMessage(
   expectedLabel: string,
   expectedValue: any,
   receivedLabel: string,
-  receivedValue: any
+  receivedValue: any,
 ) {
   return [
     `${matcher}\n`,
     `${expectedLabel}:\n${context.utils.EXPECTED_COLOR(
-      redent(display(context, expectedValue), 2)
+      redent(display(context, expectedValue), 2),
     )}`,
     `${receivedLabel}:\n${context.utils.RECEIVED_COLOR(
-      redent(display(context, receivedValue), 2)
+      redent(display(context, receivedValue), 2),
     )}`,
   ].join("\n");
 }
@@ -213,7 +213,7 @@ function deprecate(name: string, replacementText: string) {
   // eslint-disable-next-line no-console
   console.warn(
     `Warning: ${name} has been deprecated and will be removed in future updates.`,
-    replacementText
+    replacementText,
   );
 }
 
@@ -251,13 +251,13 @@ function getInputValue(inputElement: HTMLInputElement) {
 
 function getSingleElementValue(element: undefined | null): undefined;
 function getSingleElementValue(
-  element: HTMLInputElement
+  element: HTMLInputElement,
 ): ReturnType<typeof getInputValue>;
 function getSingleElementValue(
-  element: HTMLSelectElement
+  element: HTMLSelectElement,
 ): ReturnType<typeof getSelectValue>;
 function getSingleElementValue(
-  element: HTMLMeterElement | HTMLProgressElement
+  element: HTMLMeterElement | HTMLProgressElement,
 ): number;
 function getSingleElementValue(
   element:
@@ -265,10 +265,10 @@ function getSingleElementValue(
     | HTMLDataElement
     | HTMLOptionElement
     | HTMLOutputElement
-    | HTMLTextAreaElement
+    | HTMLTextAreaElement,
 ): string;
 function getSingleElementValue(
-  element: Element
+  element: Element,
 ): undefined | string | string[] | number | boolean | null;
 
 function getSingleElementValue(element: Element | undefined | null) {
@@ -294,10 +294,10 @@ function compareArraysAsSet(a: unknown, b: unknown) {
 
 function toSentence(
   array: string[],
-  { wordConnector = ", ", lastWordConnector = " and " } = {}
+  { wordConnector = ", ", lastWordConnector = " and " } = {},
 ) {
   return [array.slice(0, -1).join(wordConnector), array[array.length - 1]].join(
-    array.length > 1 ? lastWordConnector : ""
+    array.length > 1 ? lastWordConnector : "",
   );
 }
 

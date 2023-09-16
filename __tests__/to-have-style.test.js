@@ -37,11 +37,11 @@ describe(".toHaveStyle", () => {
         `);
 
     expect(container.querySelector(".label")).toHaveStyle(
-      "transition: opacity 0.2s ease-out, top 0.3s cubic-bezier(1.175, 0.885, 0.32, 1.275)"
+      "transition: opacity 0.2s ease-out, top 0.3s cubic-bezier(1.175, 0.885, 0.32, 1.275)",
     );
 
     expect(container.querySelector(".label")).toHaveStyle(
-      "background-color:blue;color:white"
+      "background-color:blue;color:white",
     );
 
     expect(container.querySelector(".label")).not.toHaveStyle(`
@@ -78,32 +78,34 @@ describe(".toHaveStyle", () => {
     document.body.appendChild(container);
 
     expect(() =>
-      expect(container.querySelector(".label")).toHaveStyle("font-weight: bold")
+      expect(container.querySelector(".label")).toHaveStyle(
+        "font-weight: bold",
+      ),
     ).toThrowError();
 
     expect(() =>
-      expect(container.querySelector(".label")).not.toHaveStyle("color: white")
+      expect(container.querySelector(".label")).not.toHaveStyle("color: white"),
     ).toThrowError();
 
     expect(() =>
       expect(container.querySelector(".label")).toHaveStyle(
-        "transition: all 0.7s ease, width 1.0s cubic-bezier(3, 4, 5, 6);"
-      )
+        "transition: all 0.7s ease, width 1.0s cubic-bezier(3, 4, 5, 6);",
+      ),
     ).toThrowError();
 
     // Make sure the test fails if the css syntax is not valid
     expect(() =>
       expect(container.querySelector(".label")).not.toHaveStyle(
-        "font-weight bold"
-      )
+        "font-weight bold",
+      ),
     ).toThrowError();
 
     expect(() =>
-      expect(container.querySelector(".label")).toHaveStyle("color white")
+      expect(container.querySelector(".label")).toHaveStyle("color white"),
     ).toThrowError();
 
     expect(() =>
-      expect(container.querySelector(".label")).toHaveStyle("--color: black")
+      expect(container.querySelector(".label")).toHaveStyle("--color: black"),
     ).toThrowError();
     document.body.removeChild(style);
     document.body.removeChild(container);
@@ -114,7 +116,7 @@ describe(".toHaveStyle", () => {
       <span data-testid="color-example" style="background-color: #123456">Hello World</span>
     `);
     expect(queryByTestId("color-example")).toHaveStyle(
-      "background-color: #123456"
+      "background-color: #123456",
     );
   });
 
@@ -139,7 +141,7 @@ describe(".toHaveStyle", () => {
         Hello world
       </div>
     `,
-      document
+      document,
     );
 
     document.body.appendChild(style);
@@ -153,7 +155,7 @@ describe(".toHaveStyle", () => {
     <span data-testid="color-example" style="border: 1px solid #fff">Hello World</span>
   `);
     expect(queryByTestId("color-example")).toHaveStyle(
-      "border: 1px solid #fff"
+      "border: 1px solid #fff",
     );
   });
 
@@ -164,7 +166,7 @@ describe(".toHaveStyle", () => {
 
     expect(queryByTestId("color-example")).toHaveStyle("color: #000000");
     expect(queryByTestId("color-example")).toHaveStyle(
-      "background-color: rgba(0, 0, 0, 1)"
+      "background-color: rgba(0, 0, 0, 1)",
     );
   });
 
@@ -176,7 +178,7 @@ describe(".toHaveStyle", () => {
         `);
 
     expect(container.querySelector(".label")).not.toHaveStyle(
-      "whatever: anything"
+      "whatever: anything",
     );
   });
 

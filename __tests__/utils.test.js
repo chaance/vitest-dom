@@ -48,7 +48,7 @@ describe("checkHtmlElement", () => {
     expect(() => {
       const element = document.createElementNS(
         "http://www.w3.org/2000/svg",
-        "rect"
+        "rect",
       );
       checkHtmlElement(element, () => {}, assertionContext);
     }).not.toThrow();
@@ -77,7 +77,7 @@ describe("checkHtmlElement", () => {
       checkHtmlElement(
         () => {},
         () => {},
-        assertionContext
+        assertionContext,
       );
     }).toThrow(HtmlElementTypeError);
   });
@@ -92,7 +92,7 @@ describe("checkHtmlElement", () => {
           },
         },
         () => {},
-        assertionContext
+        assertionContext,
       );
     }).toThrow(HtmlElementTypeError);
   });
@@ -122,7 +122,7 @@ describe("checkNode", () => {
     expect(() => {
       const element = document.createElementNS(
         "http://www.w3.org/2000/svg",
-        "rect"
+        "rect",
       );
       checkNode(element, () => {}, assertionContext);
     }).not.toThrow();
@@ -165,7 +165,7 @@ describe("checkNode", () => {
       checkNode(
         () => {},
         () => {},
-        assertionContext
+        assertionContext,
       );
     }).toThrow(NodeTypeError);
   });
@@ -180,7 +180,7 @@ describe("checkNode", () => {
           },
         },
         () => {},
-        assertionContext
+        assertionContext,
       );
     }).toThrow(NodeTypeError);
   });
@@ -193,13 +193,13 @@ describe("toSentence", () => {
 
   it("supports custom word connector", () => {
     expect(toSentence(["one", "two", "three"], { wordConnector: "; " })).toBe(
-      "one; two and three"
+      "one; two and three",
     );
   });
 
   it("supports custom last word connector", () => {
     expect(
-      toSentence(["one", "two", "three"], { lastWordConnector: " or " })
+      toSentence(["one", "two", "three"], { lastWordConnector: " or " }),
     ).toBe("one, two or three");
   });
 

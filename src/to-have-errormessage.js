@@ -21,7 +21,7 @@ export function toHaveErrorMessage(htmlElement, checkWith) {
           "Received",
           htmlElement.hasAttribute("aria-invalid")
             ? `aria-invalid="${htmlElement.getAttribute("aria-invalid")}"`
-            : this.utils.printReceived("")
+            : this.utils.printReceived(""),
         );
       },
     };
@@ -41,7 +41,7 @@ export function toHaveErrorMessage(htmlElement, checkWith) {
       .filter(Boolean);
 
     errormessage = normalize(
-      errormessageEls.map((el) => el.textContent).join(" ")
+      errormessageEls.map((el) => el.textContent).join(" "),
     );
   }
 
@@ -58,12 +58,12 @@ export function toHaveErrorMessage(htmlElement, checkWith) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toHaveErrorMessage`,
           "element",
-          ""
+          "",
         ),
         `Expected the element ${to} have error message`,
         this.utils.printExpected(checkWith),
         "Received",
-        this.utils.printReceived(errormessage)
+        this.utils.printReceived(errormessage),
       );
     },
   };

@@ -3,5 +3,5 @@ import type { MatcherResult } from "./types";
 
 /** @deprecated */
 export function toHaveAccessibleDescription(
-  text?: string | RegExp | typeof expect.stringContaining
+  text?: string | RegExp | typeof expect.stringContaining,
 ): MatcherResult;

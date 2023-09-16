@@ -46,13 +46,13 @@ test(".toBeEmptyDOMElement", () => {
   expect(() => expect(withComment).not.toBeEmptyDOMElement()).toThrowError();
 
   expect(() =>
-    expect(withMultipleComments).not.toBeEmptyDOMElement()
+    expect(withMultipleComments).not.toBeEmptyDOMElement(),
   ).toThrowError();
 
   expect(() => expect(withElement).toBeEmptyDOMElement()).toThrowError();
 
   expect(() =>
-    expect(withElementAndComment).toBeEmptyDOMElement()
+    expect(withElementAndComment).toBeEmptyDOMElement(),
   ).toThrowError();
 
   expect(() => expect(withWhitespace).toBeEmptyDOMElement()).toThrowError();

@@ -10,10 +10,10 @@ import type { MatcherResult } from "./types";
 // Returns the combined value of several elements that have the same name
 // e.g. radio buttons or groups of checkboxes
 function getMultiElementValue(
-  elements: (HTMLInputElement & { type: "radio" })[]
+  elements: (HTMLInputElement & { type: "radio" })[],
 ): string | undefined;
 function getMultiElementValue(
-  elements: (HTMLInputElement & { type: "checkbox" })[]
+  elements: (HTMLInputElement & { type: "checkbox" })[],
 ): string[];
 function getMultiElementValue(elements: HTMLInputElement[]): string[];
 
@@ -21,7 +21,7 @@ function getMultiElementValue(elements: HTMLInputElement[]) {
   const types = uniq(elements.map((element) => element.type));
   if (types.length !== 1) {
     throw new Error(
-      "Multiple form elements with the same name must be of the same type"
+      "Multiple form elements with the same name must be of the same type",
     );
   }
   switch (types[0]) {
@@ -49,7 +49,7 @@ type FormElement =
 
 function getFormValue(
   container: HTMLFormElement | HTMLFieldSetElement,
-  name: string
+  name: string,
 ) {
   container.elements;
   const elements = [
@@ -73,21 +73,21 @@ function getPureName(name: string) {
 
 function getAllFormValues(container: HTMLFormElement | HTMLFieldSetElement) {
   const names = Array.from(container.elements).map(
-    (element) => (element as HTMLInputElement).name
+    (element) => (element as HTMLInputElement).name,
   );
   return names.reduce<Record<string, unknown>>(
     (obj, name) => ({
       ...obj,
       [getPureName(name)]: getFormValue(container, name),
     }),
-    {}
+    {},
   );
 }
 
 export function toHaveFormValues(
   this: any,
   formElement: HTMLFormElement | HTMLFieldSetElement,
-  expectedValues: Record<string, unknown>
+  expectedValues: Record<string, unknown>,
 ): MatcherResult {
   checkHtmlElement(formElement, toHaveFormValues, this);
   if (!formElement.elements) {
@@ -97,7 +97,7 @@ export function toHaveFormValues(
   const formValues = getAllFormValues(formElement);
   return {
     pass: Object.entries(expectedValues).every(([name, expectedValue]) =>
-      isEqualWith(formValues[name], expectedValue, compareArraysAsSet)
+      isEqualWith(formValues[name], expectedValue, compareArraysAsSet),
     ),
     message: () => {
       const to = this.isNot ? "not to" : "to";

@@ -3,7 +3,7 @@ import { checkHtmlElement, deprecate } from "./utils";
 export function toBeInTheDOM(element, container) {
   deprecate(
     "toBeInTheDOM",
-    "Please use toBeInTheDocument for searching the entire document and toContainElement for searching a specific container."
+    "Please use toBeInTheDocument for searching the entire document and toContainElement for searching a specific container.",
   );
 
   if (element) {
@@ -21,12 +21,12 @@ export function toBeInTheDOM(element, container) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeInTheDOM`,
           "element",
-          ""
+          "",
         ),
         "",
         "Received:",
         `  ${this.utils.printReceived(
-          element ? element.cloneNode(false) : element
+          element ? element.cloneNode(false) : element,
         )}`,
       ].join("\n");
     },

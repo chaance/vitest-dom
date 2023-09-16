@@ -42,82 +42,82 @@ describe(".toBePartiallyChecked", () => {
 
   test("throws when input checkbox is mixed but expected not to be", () => {
     const { queryByTestId } = render(
-      `<input type="checkbox" aria-checked="mixed" data-testid="checkbox-mixed" />`
+      `<input type="checkbox" aria-checked="mixed" data-testid="checkbox-mixed" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("checkbox-mixed")).not.toBePartiallyChecked()
+      expect(queryByTestId("checkbox-mixed")).not.toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test("throws when input checkbox is indeterminate but expected not to be", () => {
     const { queryByTestId } = render(
-      `<input type="checkbox" data-testid="checkbox-mixed" />`
+      `<input type="checkbox" data-testid="checkbox-mixed" />`,
     );
 
     queryByTestId("checkbox-mixed").indeterminate = true;
 
     expect(() =>
-      expect(queryByTestId("input-mixed")).not.toBePartiallyChecked()
+      expect(queryByTestId("input-mixed")).not.toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test("throws when input checkbox is not checked but expected to be", () => {
     const { queryByTestId } = render(
-      `<input type="checkbox" data-testid="checkbox-empty" />`
+      `<input type="checkbox" data-testid="checkbox-empty" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("checkbox-empty")).toBePartiallyChecked()
+      expect(queryByTestId("checkbox-empty")).toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" is partially checked but expected not to be', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="mixed" data-testid="aria-checkbox-mixed" />`
+      `<div role="checkbox" aria-checked="mixed" data-testid="aria-checkbox-mixed" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-mixed")).not.toBePartiallyChecked()
+      expect(queryByTestId("aria-checkbox-mixed")).not.toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" is checked but expected to be partially checked', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />`
+      `<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-checked")).toBePartiallyChecked()
+      expect(queryByTestId("aria-checkbox-checked")).toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" is not checked but expected to be', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="false" data-testid="aria-checkbox" />`
+      `<div role="checkbox" aria-checked="false" data-testid="aria-checkbox" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox")).toBePartiallyChecked()
+      expect(queryByTestId("aria-checkbox")).toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test('throws when element with role="checkbox" has an invalid aria-checked attribute', () => {
     const { queryByTestId } = render(
-      `<div role="checkbox" aria-checked="something" data-testid="aria-checkbox-invalid" />`
+      `<div role="checkbox" aria-checked="something" data-testid="aria-checkbox-invalid" />`,
     );
 
     expect(() =>
-      expect(queryByTestId("aria-checkbox-invalid")).toBePartiallyChecked()
+      expect(queryByTestId("aria-checkbox-invalid")).toBePartiallyChecked(),
     ).toThrowError();
   });
 
   test("throws when the element is not a checkbox", () => {
     const { queryByTestId } = render(`<select data-testid="select"></select>`);
     expect(() =>
-      expect(queryByTestId("select")).toBePartiallyChecked()
+      expect(queryByTestId("select")).toBePartiallyChecked(),
     ).toThrowError(
-      'only inputs with type="checkbox" or elements with role="checkbox" and a valid aria-checked attribute can be used with .toBePartiallyChecked(). Use .toHaveValue() instead'
+      'only inputs with type="checkbox" or elements with role="checkbox" and a valid aria-checked attribute can be used with .toBePartiallyChecked(). Use .toHaveValue() instead',
     );
   });
 });

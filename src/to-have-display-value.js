@@ -6,13 +6,13 @@ export function toHaveDisplayValue(htmlElement, expectedValue) {
 
   if (!["select", "input", "textarea"].includes(tagName)) {
     throw new Error(
-      ".toHaveDisplayValue() currently supports only input, textarea or select elements, try with another matcher instead."
+      ".toHaveDisplayValue() currently supports only input, textarea or select elements, try with another matcher instead.",
     );
   }
 
   if (tagName === "input" && ["radio", "checkbox"].includes(htmlElement.type)) {
     throw new Error(
-      `.toHaveDisplayValue() currently does not support input[type="${htmlElement.type}"], try with another matcher instead.`
+      `.toHaveDisplayValue() currently does not support input[type="${htmlElement.type}"], try with another matcher instead.`,
     );
   }
 
@@ -22,8 +22,8 @@ export function toHaveDisplayValue(htmlElement, expectedValue) {
     values.some((value) =>
       expected instanceof RegExp
         ? expected.test(value)
-        : this.equals(value, String(expected))
-    )
+        : this.equals(value, String(expected)),
+    ),
   ).length;
 
   const matchedWithAllValues = numberOfMatchesWithValues === values.length;
@@ -38,12 +38,12 @@ export function toHaveDisplayValue(htmlElement, expectedValue) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toHaveDisplayValue`,
           "element",
-          ""
+          "",
         ),
         `Expected element ${this.isNot ? "not " : ""}to have display value`,
         expectedValue,
         "Received",
-        values
+        values,
       ),
   };
 }

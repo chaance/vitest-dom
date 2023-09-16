@@ -30,33 +30,33 @@ test(".toBeRequired", () => {
 
   // negative test cases wrapped in throwError assertions for coverage.
   expect(() =>
-    expect(queryByTestId("required-input")).not.toBeRequired()
+    expect(queryByTestId("required-input")).not.toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("aria-required-input")).not.toBeRequired()
+    expect(queryByTestId("aria-required-input")).not.toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("conflicted-input")).not.toBeRequired()
+    expect(queryByTestId("conflicted-input")).not.toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("not-required-input")).toBeRequired()
+    expect(queryByTestId("not-required-input")).toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("basic-input")).toBeRequired()
+    expect(queryByTestId("basic-input")).toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("unsupported-type")).toBeRequired()
+    expect(queryByTestId("unsupported-type")).toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("select")).not.toBeRequired()
+    expect(queryByTestId("select")).not.toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("textarea")).not.toBeRequired()
+    expect(queryByTestId("textarea")).not.toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("supported-role")).toBeRequired()
+    expect(queryByTestId("supported-role")).toBeRequired(),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("supported-role-aria")).not.toBeRequired()
+    expect(queryByTestId("supported-role-aria")).not.toBeRequired(),
   ).toThrowError();
 });

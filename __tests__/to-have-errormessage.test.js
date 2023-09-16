@@ -13,11 +13,11 @@ describe(".toHaveErrorMessage", () => {
     const timeInput = queryByTestId("startTime");
 
     expect(timeInput).toHaveErrorMessage(
-      "Invalid time: the time must be between 9:00 AM and 5:00 PM"
+      "Invalid time: the time must be between 9:00 AM and 5:00 PM",
     );
     expect(timeInput).toHaveErrorMessage(/invalid time/i); // to partially match
     expect(timeInput).toHaveErrorMessage(
-      expect.stringContaining("Invalid time")
+      expect.stringContaining("Invalid time"),
     ); // to partially match
     expect(timeInput).not.toHaveErrorMessage("Pikachu!");
   });
@@ -32,11 +32,11 @@ describe(".toHaveErrorMessage", () => {
     const timeInput = queryByTestId("startTime");
 
     expect(timeInput).toHaveErrorMessage(
-      "Invalid time: the time must be between 9:00 AM and 5:00 PM"
+      "Invalid time: the time must be between 9:00 AM and 5:00 PM",
     );
     expect(timeInput).toHaveErrorMessage(/invalid time/i); // to partially match
     expect(timeInput).toHaveErrorMessage(
-      expect.stringContaining("Invalid time")
+      expect.stringContaining("Invalid time"),
     ); // to partially match
     expect(timeInput).not.toHaveErrorMessage("Pikachu!");
   });
@@ -54,11 +54,11 @@ describe(".toHaveErrorMessage", () => {
     }).toThrowError();
 
     expect(queryByTestId("explicitly_valid")).not.toHaveErrorMessage(
-      "The errormessage"
+      "The errormessage",
     );
     expect(() => {
       expect(queryByTestId("explicitly_valid")).toHaveErrorMessage(
-        "The errormessage"
+        "The errormessage",
       );
     }).toThrowError();
   });
@@ -109,16 +109,16 @@ describe(".toHaveErrorMessage", () => {
     `);
 
     expect(queryByTestId("multiple")).toHaveErrorMessage(
-      "First errormessage Second errormessage Third errormessage"
+      "First errormessage Second errormessage Third errormessage",
     );
     expect(queryByTestId("multiple")).toHaveErrorMessage(
-      /Second errormessage Third/
+      /Second errormessage Third/,
     );
     expect(queryByTestId("multiple")).toHaveErrorMessage(
-      expect.stringContaining("Second errormessage Third")
+      expect.stringContaining("Second errormessage Third"),
     );
     expect(queryByTestId("multiple")).toHaveErrorMessage(
-      expect.stringMatching(/Second errormessage Third/)
+      expect.stringMatching(/Second errormessage Third/),
     );
     expect(queryByTestId("multiple")).not.toHaveErrorMessage("Something else");
     expect(queryByTestId("multiple")).not.toHaveErrorMessage("First");
@@ -131,15 +131,17 @@ describe(".toHaveErrorMessage", () => {
     `);
 
     expect(() =>
-      expect(queryByTestId("other")).toHaveErrorMessage("The errormessage")
+      expect(queryByTestId("other")).toHaveErrorMessage("The errormessage"),
     ).toThrowError();
 
     expect(() =>
-      expect(queryByTestId("target")).toHaveErrorMessage("Something else")
+      expect(queryByTestId("target")).toHaveErrorMessage("Something else"),
     ).toThrowError();
 
     expect(() =>
-      expect(queryByTestId("target")).not.toHaveErrorMessage("The errormessage")
+      expect(queryByTestId("target")).not.toHaveErrorMessage(
+        "The errormessage",
+      ),
     ).toThrowError();
   });
 
@@ -160,7 +162,7 @@ describe(".toHaveErrorMessage", () => {
     `);
 
     expect(queryByTestId("target")).toHaveErrorMessage(
-      "Step 1 of 4 And extra errormessage"
+      "Step 1 of 4 And extra errormessage",
     );
   });
 
@@ -189,7 +191,7 @@ describe(".toHaveErrorMessage", () => {
     `);
 
     expect(queryByTestId("multiple")).toHaveErrorMessage(
-      "First errormessage Second errormessage Third errormessage"
+      "First errormessage Second errormessage Third errormessage",
     );
   });
 

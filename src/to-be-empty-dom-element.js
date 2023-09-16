@@ -10,7 +10,7 @@ export function toBeEmptyDOMElement(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeEmptyDOMElement`,
           "element",
-          ""
+          "",
         ),
         "",
         "Received:",
@@ -30,7 +30,7 @@ export function toBeEmptyDOMElement(element) {
  */
 function isEmptyElement(element) {
   const nonCommentChildNodes = [...element.childNodes].filter(
-    (node) => node.nodeType !== 8
+    (node) => node.nodeType !== 8,
   );
   return nonCommentChildNodes.length === 0;
 }

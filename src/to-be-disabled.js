@@ -25,7 +25,7 @@ function isFirstLegendChildOfFieldset(element, parent) {
     getTag(element) === "legend" &&
     getTag(parent) === "fieldset" &&
     element.isSameNode(
-      Array.from(parent.children).find((child) => getTag(child) === "legend")
+      Array.from(parent.children).find((child) => getTag(child) === "legend"),
     )
   );
 }
@@ -81,7 +81,7 @@ export function toBeDisabled(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeDisabled`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} disabled:`,
@@ -104,7 +104,7 @@ export function toBeEnabled(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeEnabled`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} enabled:`,

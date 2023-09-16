@@ -3,7 +3,7 @@ import { getMessage, checkNode, matches, normalize } from "./utils";
 export function toHaveTextContent(
   node,
   checkWith,
-  options = { normalizeWhitespace: true }
+  options = { normalizeWhitespace: true },
 ) {
   checkNode(node, toHaveTextContent, this);
 
@@ -22,14 +22,14 @@ export function toHaveTextContent(
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toHaveTextContent`,
           "element",
-          ""
+          "",
         ),
         checkingWithEmptyString
           ? `Checking with empty string will always match, use .toBeEmptyDOMElement() instead`
           : `Expected element ${to} have text content`,
         checkWith,
         "Received",
-        textContent
+        textContent,
       );
     },
   };

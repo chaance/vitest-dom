@@ -35,7 +35,7 @@ export function toBeInvalid(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeInvalid`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} currently invalid:`,
@@ -58,7 +58,7 @@ export function toBeValid(element) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.toBeValid`,
           "element",
-          ""
+          "",
         ),
         "",
         `Received element ${is} currently valid:`,

@@ -32,41 +32,41 @@ test(".toContainElement positive test cases", () => {
 
 test(".toContainElement negative test cases", () => {
   expect(() =>
-    expect(nonExistantElement).not.toContainElement(child)
+    expect(nonExistantElement).not.toContainElement(child),
   ).toThrowError();
   expect(() => expect(parent).toContainElement(grandparent)).toThrowError();
   expect(() =>
-    expect(nonExistantElement).toContainElement(grandparent)
+    expect(nonExistantElement).toContainElement(grandparent),
   ).toThrowError();
   expect(() =>
-    expect(grandparent).toContainElement(nonExistantElement)
+    expect(grandparent).toContainElement(nonExistantElement),
   ).toThrowError();
   expect(() =>
-    expect(nonExistantElement).toContainElement(nonExistantElement)
+    expect(nonExistantElement).toContainElement(nonExistantElement),
   ).toThrowError();
   expect(() =>
-    expect(nonExistantElement).toContainElement(fakeElement)
+    expect(nonExistantElement).toContainElement(fakeElement),
   ).toThrowError();
   expect(() =>
-    expect(fakeElement).toContainElement(nonExistantElement)
+    expect(fakeElement).toContainElement(nonExistantElement),
   ).toThrowError();
   expect(() =>
-    expect(fakeElement).not.toContainElement(nonExistantElement)
+    expect(fakeElement).not.toContainElement(nonExistantElement),
   ).toThrowError();
   expect(() =>
-    expect(fakeElement).toContainElement(grandparent)
+    expect(fakeElement).toContainElement(grandparent),
   ).toThrowError();
   expect(() =>
-    expect(grandparent).toContainElement(fakeElement)
+    expect(grandparent).toContainElement(fakeElement),
   ).toThrowError();
   expect(() =>
-    expect(fakeElement).toContainElement(fakeElement)
+    expect(fakeElement).toContainElement(fakeElement),
   ).toThrowError();
   expect(() => expect(grandparent).not.toContainElement(child)).toThrowError();
   expect(() =>
-    expect(grandparent).not.toContainElement(svgElement)
+    expect(grandparent).not.toContainElement(svgElement),
   ).toThrowError();
   expect(() =>
-    expect(grandparent).not.toContainElement(undefined)
+    expect(grandparent).not.toContainElement(undefined),
   ).toThrowError();
 });

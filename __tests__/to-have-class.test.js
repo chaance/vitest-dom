@@ -32,7 +32,7 @@ test(".toHaveClass", () => {
   expect(queryByTestId("delete-button")).toHaveClass("btn", "btn-danger");
   expect(queryByTestId("delete-button")).toHaveClass(
     "btn extra",
-    "btn-danger extra"
+    "btn-danger extra",
   );
   expect(queryByTestId("delete-button")).not.toHaveClass("btn-link");
   expect(queryByTestId("cancel-button")).not.toHaveClass("btn-danger");
@@ -43,52 +43,52 @@ test(".toHaveClass", () => {
   expect(queryByTestId("no-classes")).not.toHaveClass(" ");
 
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("btn")
+    expect(queryByTestId("delete-button")).not.toHaveClass("btn"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("btn-danger")
+    expect(queryByTestId("delete-button")).not.toHaveClass("btn-danger"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("extra")
+    expect(queryByTestId("delete-button")).not.toHaveClass("extra"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).toHaveClass("xtra")
+    expect(queryByTestId("delete-button")).toHaveClass("xtra"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).toHaveClass("btn", "extra xtra")
+    expect(queryByTestId("delete-button")).toHaveClass("btn", "extra xtra"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("btn btn-danger")
+    expect(queryByTestId("delete-button")).not.toHaveClass("btn btn-danger"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("btn", "btn-danger")
+    expect(queryByTestId("delete-button")).not.toHaveClass("btn", "btn-danger"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).toHaveClass("btn-link")
+    expect(queryByTestId("delete-button")).toHaveClass("btn-link"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("cancel-button")).toHaveClass("btn-danger")
+    expect(queryByTestId("cancel-button")).toHaveClass("btn-danger"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("svg-spinner")).not.toHaveClass("spinner")
+    expect(queryByTestId("svg-spinner")).not.toHaveClass("spinner"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("svg-spinner")).toHaveClass("wise")
+    expect(queryByTestId("svg-spinner")).toHaveClass("wise"),
   ).toThrowError();
   expect(() =>
-    expect(queryByTestId("delete-button")).toHaveClass()
+    expect(queryByTestId("delete-button")).toHaveClass(),
   ).toThrowError(/At least one expected class must be provided/);
   expect(() =>
-    expect(queryByTestId("delete-button")).toHaveClass("")
+    expect(queryByTestId("delete-button")).toHaveClass(""),
   ).toThrowError(/At least one expected class must be provided/);
   expect(() => expect(queryByTestId("no-classes")).toHaveClass()).toThrowError(
-    /At least one expected class must be provided/
+    /At least one expected class must be provided/,
   );
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass()
+    expect(queryByTestId("delete-button")).not.toHaveClass(),
   ).toThrowError(/(none)/);
   expect(() =>
-    expect(queryByTestId("delete-button")).not.toHaveClass("  ")
+    expect(queryByTestId("delete-button")).not.toHaveClass("  "),
   ).toThrowError(/(none)/);
 });
 
@@ -103,7 +103,7 @@ test(".toHaveClass with exact mode option", () => {
   });
   expect(queryByTestId("delete-button")).not.toHaveClass(
     "btn extra btn-danger foo",
-    { exact: true }
+    { exact: true },
   );
 
   expect(queryByTestId("delete-button")).toHaveClass("btn extra btn-danger", {
@@ -114,14 +114,14 @@ test(".toHaveClass with exact mode option", () => {
   });
   expect(queryByTestId("delete-button")).not.toHaveClass(
     "btn extra btn-danger foo",
-    { exact: false }
+    { exact: false },
   );
 
   expect(queryByTestId("delete-button")).toHaveClass(
     "btn",
     "extra",
     "btn-danger",
-    { exact: true }
+    { exact: true },
   );
   expect(queryByTestId("delete-button")).not.toHaveClass("btn", "extra", {
     exact: true,
@@ -131,14 +131,14 @@ test(".toHaveClass with exact mode option", () => {
     "extra",
     "btn-danger",
     "foo",
-    { exact: true }
+    { exact: true },
   );
 
   expect(queryByTestId("delete-button")).toHaveClass(
     "btn",
     "extra",
     "btn-danger",
-    { exact: false }
+    { exact: false },
   );
   expect(queryByTestId("delete-button")).toHaveClass("btn", "extra", {
     exact: false,
@@ -148,7 +148,7 @@ test(".toHaveClass with exact mode option", () => {
     "extra",
     "btn-danger",
     "foo",
-    { exact: false }
+    { exact: false },
   );
 
   expect(queryByTestId("only-one-class")).toHaveClass("alone", { exact: true });
@@ -172,12 +172,12 @@ test(".toHaveClass with exact mode option", () => {
   expect(() =>
     expect(queryByTestId("only-one-class")).not.toHaveClass("alone", {
       exact: true,
-    })
+    }),
   ).toThrowError(/Expected the element not to have EXACTLY defined classes/);
 
   expect(() =>
     expect(queryByTestId("only-one-class")).toHaveClass("alone", "foo", {
       exact: true,
-    })
+    }),
   ).toThrowError(/Expected the element to have EXACTLY defined classes/);
 });

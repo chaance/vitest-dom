@@ -28,12 +28,12 @@ export function toHaveAccessibleName(htmlElement, expectedAccessibleName) {
         this.utils.matcherHint(
           `${this.isNot ? ".not" : ""}.${toHaveAccessibleName.name}`,
           "element",
-          ""
+          "",
         ),
         `Expected element ${to} have accessible name`,
         expectedAccessibleName,
         "Received",
-        actualAccessibleName
+        actualAccessibleName,
       );
     },
   };
